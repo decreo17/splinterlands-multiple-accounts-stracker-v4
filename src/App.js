@@ -6,15 +6,27 @@ import Footer from './components/Footer/Footer';
 import Settings from './components/Settings/Settings';
 import React from 'react'
 import { SideBar } from './components/SideBar/SideBar';
+import Header from './components/Header/Header';
+import store from './store/store';
+import { Provider } from 'react-redux/es/exports';
+import SeasonBanner from './components/SeasonBanner/SeasonBanner';
 
 const App = () => {
+
   return (
-    <>
-    <Menu />
-    <SideBar />
-    <Footer />
-    <Settings />
-    </>
+      <Provider store={store}>
+      <>
+        <Menu />
+        <SideBar />
+        <div className="w3-main" style={{marginTop:'43px'}}>
+        <Header />
+        <SeasonBanner />
+        <Footer />
+        </div>
+        <Settings />
+      </>      
+      </Provider>
+
   );
 }
 

@@ -16,8 +16,7 @@ const Menu = () => {
           </div>
 
           <span className="w3-hide-small w3-bar-item w3-right">Splinterlands Multiple Account Tracker</span>
-      </div>
-      
+      </div>  
     </>
     );
 }

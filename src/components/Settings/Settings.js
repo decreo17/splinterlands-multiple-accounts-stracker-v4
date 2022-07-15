@@ -7,9 +7,16 @@ import AutoLoadBox from '../../utils/AutoLoadBox';
 
 class Settings extends Component {
     render() {
-      return (
+    
+    document.addEventListener('click', (event) => {
+        if(!event.target.closest('#top-container') && !event.target.closest('#settings-content')) {
+            document.getElementById('settings-holder').style.display="none"
+        }
+    });
+    
+    return (
         <div className="w3-modal" style={{display:"none"}} id="settings-holder">
-            <div className="w3-round w3-modal-content w3-animate-zoom w3-card-4">
+            <div id='settings-content' className="w3-round w3-modal-content w3-animate-zoom w3-card-4">
                 <header className="w3-container w3-round w3-green">
                     <span onClick={() => document.getElementById('settings-holder').style.display="none"} 
                     className="w3-button w3-round w3-display-topright">&times;</span>
