@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import store from './store/store';
 import { Provider } from 'react-redux/es/exports';
 import SeasonBanner from './components/SeasonBanner/SeasonBanner';
+import { GlobalStyles } from './themes/global';
 
 const App = () => {
 
@@ -24,7 +25,7 @@ const App = () => {
         <Footer />
         </div>
         <Settings />
-      </>      
+      </>     
       </Provider>
 
   );

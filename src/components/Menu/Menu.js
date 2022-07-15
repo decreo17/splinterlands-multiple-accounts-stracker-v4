@@ -14,8 +14,7 @@ const Menu = () => {
               <button onClick = {() => document.getElementById('settings-holder').style.display='block'} 
                 className="w3-bar-item w3-button w3-padding"><i><FontAwesomeIcon icon={faCog} /></i>  Settings</button>
           </div>
-
-          <span className="w3-hide-small w3-bar-item w3-right">Splinterlands Multiple Account Tracker</span>
+          <span id="smat" className="w3-hide-small w3-bar-item w3-right">Splinterlands Multiple Account Tracker</span>
       </div>  
     </>
     );

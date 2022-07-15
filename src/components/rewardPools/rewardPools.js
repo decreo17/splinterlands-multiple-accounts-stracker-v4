@@ -10,6 +10,7 @@ const RewardPools = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        
         rewardsApi.then((data) => { 
             var wild_dec_rewards = data.dec.reward_pool;
             var wild_rewards = new Intl.NumberFormat().format(wild_dec_rewards);
@@ -19,7 +20,8 @@ const RewardPools = () => {
             var modern_rewards = new Intl.NumberFormat().format(modern_dec_rewards);
             dispatch(setModern(modern_rewards))
         })
-    }, []);
+        // eslint-disable-next-line
+    },[]);
 
     return (
         <>  

@@ -43,7 +43,7 @@ const SeasonBanner = () => {
 
     return (
         <div className="w3-panel w3-topbar w3-bottombar w3-border-gray w3-pale-gray">
-            <div className="card h-100">
+            <div className="h-100">
                 <div style={{textAlign: "center"}}>
                     <span id="name_season"></span> {seasonName}
                     <span id="days"></span> {days} Days
