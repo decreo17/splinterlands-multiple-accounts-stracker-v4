@@ -10,13 +10,13 @@ const Footer = () => {
               For support and appreciation for this project you may 
               donate Cards, DEC or SPS to @dadee or @decreo ingame or via hive blockchain<br />
               For questions and support, look for decreo | decreo17.github.io#2564 in Splinterlands discord.<br />
-              <a href="https://m.me/DadeeGaming17" target="_blank" rel="noreferrer">m.me/DadeeGaming17</a> ||
+              <a href="https://m.me/DadeeGaming17" target="_blank" rel="noreferrer">m.me/DadeeGaming17</a> || 
               <a href="https://decreo17.github.io/Splinterlands-Multiple-Account-Tracker/privacyPolicy.html" target="_blank" rel="noreferrer">
-                 Privacy Policy</a>
+                <span> Privacy Policy</span></a><br />
+              <small>Disclaimer: This website is developed by a student and is not officially related to Splinterlands or Steam Monsters Inc.
+                Images used were property of splinterlands/Steem Monsters Inc.
+              </small>
           </p>
-          <small>Disclaimer: This website is developed by a student and is not officially related to Splinterlands or Steam Monsters Inc.
-            Images used were property of splinterlands/Steem Monsters Inc.
-          </small>
         </ footer>
       </>
     );

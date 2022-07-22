@@ -1,0 +1,11 @@
+.load-center {
+    position: fixed;
+    opacity: 0.4;
+    z-index: 1; /* Add a z-index if needed */
+    width:8000px;  /* adjust as per your needs */
+    height: 8000px;
+    margin-left:-4000px;   /* negative half of width above */
+    margin-top: -200px;
+    left:50%;
+    top:50%
+  }

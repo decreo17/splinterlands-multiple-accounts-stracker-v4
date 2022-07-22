@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setDays, setHours, setMinutes, setSeconds, setSeasonName } from '../../slices/seasonSlice';
 import React, { useEffect } from "react";
 import RewardPools from '../rewardPools/rewardPools';
+import LoadingSlice from '../../slices/loadingSlice';
 
 const SeasonBanner = () => {
     const days = useSelector((state) => state.season.days)
@@ -15,8 +16,10 @@ const SeasonBanner = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(LoadingSlice.actions.isLoading(true))
         const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
         settingsApi.then(data => {
+            
             let birthday = data.season.ends,
                 countDown = new Date(birthday).getTime()
             let x = setInterval(() => {
@@ -28,7 +31,7 @@ const SeasonBanner = () => {
                 dispatch(setHours(Math.floor((distance % (day)) / (hour))))
                 dispatch(setMinutes(Math.floor((distance % (hour)) / (minute))))
                 dispatch(setSeconds(Math.floor((distance % (minute)) / second)))
-
+                
             //do something later when date is reached
             if (distance < 0) {
             setInterval(function() {
@@ -38,6 +41,7 @@ const SeasonBanner = () => {
             clearInterval(x);
             }
             }, 0);
+            dispatch(LoadingSlice.actions.isLoading(false))
         }, []);
     })
 

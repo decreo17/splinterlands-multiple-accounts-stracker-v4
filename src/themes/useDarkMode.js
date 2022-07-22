@@ -9,10 +9,10 @@ export const useDarkMode = () => {
   };
 
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setMode('dark')
-    } else {
+    if (theme === 'dark') {
       setMode('light')
+    } else {
+      setMode('dark')
     }
   };
 
@@ -22,7 +22,7 @@ export const useDarkMode = () => {
       setMode('dark') :
       localTheme ?
         setTheme(localTheme) :
-        setMode('light');
+        setMode('dark');
     setComponentMounted(true);
   }, []);
 
