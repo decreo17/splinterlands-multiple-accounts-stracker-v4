@@ -9,7 +9,7 @@ import Toggle from './Toggle';
 function Themes() {
     const [theme, toggleTheme, componentMounted] = useDarkMode();
   
-    const themeMode = theme === 'dark' ? lightTheme : darkTheme;
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
   
     if (!componentMounted) {
       return <div />

@@ -8,17 +8,21 @@ import React from 'react'
 import { SideBar } from './components/SideBar/SideBar';
 import Header from './components/Header/Header';
 import SeasonBanner from './components/SeasonBanner/SeasonBanner';
+import AccountsMainTable from './components/AccountsMainTable/AccountsMainTable'
+import AddAccount from './components/Accounts/AddAccount';
 
 const App = () => {
 
   return (
     <>
+      <AddAccount />
       <Settings />
       <Menu />
       <SideBar />
       <div className="w3-main" style={{marginTop:'43px'}}>
       <SeasonBanner />
       <Header />
+      <AccountsMainTable />
       <Footer />
       </div>
     </>

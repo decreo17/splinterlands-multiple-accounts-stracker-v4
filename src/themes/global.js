@@ -12,6 +12,10 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
+  #add-account-modal #form{
+    background-color: ${({ theme }) => theme.body};
+  }
+
   body {
     
     background: ${({ theme }) => theme.body};
