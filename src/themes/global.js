@@ -7,13 +7,17 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  #themes-settings-button, #my-sidebar, header, footer, #smat {
+  #themes-settings-button, #my-sidebar, header, footer, #smat, .card, .btn {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
   }
 
   #add-account-modal #form{
     background-color: ${({ theme }) => theme.body};
+  }
+
+  :root {
+    --toastify-toast-background: ${({ theme }) => theme.body};
   }
 
   body {

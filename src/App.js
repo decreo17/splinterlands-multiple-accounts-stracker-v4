@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import SeasonBanner from './components/SeasonBanner/SeasonBanner';
 import AccountsMainTable from './components/AccountsMainTable/AccountsMainTable'
 import AddAccount from './components/Accounts/AddAccount';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
 
@@ -21,6 +22,18 @@ const App = () => {
       <SideBar />
       <div className="w3-main" style={{marginTop:'43px'}}>
       <SeasonBanner />
+      <ToastContainer
+        limit={5}
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Header />
       <AccountsMainTable />
       <Footer />

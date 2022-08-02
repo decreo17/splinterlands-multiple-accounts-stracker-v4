@@ -6,6 +6,7 @@ const api = splinterlandsApi
 const getSplinterlandsSettings = async() => {
     let res 
     try {
+      console.log("Splinterlands API called getSplinterlandsSettings")
         res = await $.getJSON(`${api}/settings`)
         return res
     } catch (error) {
