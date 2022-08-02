@@ -34,7 +34,7 @@ const DashboardSlice = createSlice({
             state.totalSps = 0
             state.totalStake = 0
         },
-        addAccount(state, action){
+        setAccount(state, action){
             state.totalAccounts = action.payload
         },
         setDecPrice(state, action){
@@ -43,34 +43,34 @@ const DashboardSlice = createSlice({
         setSpsPrice(state, action){
             state.spsPrice = action.payload
         },
-        addChaos(state, action){
+        setChaos(state, action){
             state.totalChaos = action.payload
         },
-        addCredits(state, action){
+        setCredits(state, action){
             state.totalCredits = action.payload
         },
-        addDec(state, action){
+        setDec(state, action){
             state.totalDec = action.payload
         },
-        addSps(state, action){
+        setSps(state, action){
             state.totalSps = action.payload
         },
-        addStake(state, action){
+        setStake(state, action){
             state.totalStake = action.payload
         },
-        addEarned(state, action){
+        setEarned(state, action){
             state.totalEarned = action.payload
         },
-        addRent(state, action){
+        setRent(state, action){
             state.totalRent = action.payload
         },
-        addNetIncome(state, action){
+        setNetIncome(state, action){
             state.netIncome = action.payload
         }
     } 
 });
 
-export const { reset, resetRent, resetDashboardExceptTotalAccounts, addAccount, setDecPrice,
-    setSpsPrice, addChaos, addCredits, addDec, addSps, addStake, addEarned, addRent, addNetIncome } = DashboardSlice.actions
+export const { reset, resetRent, resetDashboardExceptTotalAccounts, setAccount: addAccount, setDecPrice,
+    setSpsPrice, setChaos: addChaos, setCredits: addCredits, setDec: addDec, setSps: addSps, setStake: addStake, setEarned: addEarned, setRent: addRent, setNetIncome: addNetIncome } = DashboardSlice.actions
 
 export default DashboardSlice;

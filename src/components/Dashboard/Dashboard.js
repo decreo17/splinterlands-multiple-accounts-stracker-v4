@@ -1,8 +1,12 @@
 import { faDashboard, faUser, faBitcoinSign, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import DashboardSlice from '../../slices/dashboardSlice'
+import CoinGecoPriceApi from '../../api/CoinGecoPrice'
 
 const Dashboard = () => {
+    const dispatch = useDispatch()
     const totalAccounts = useSelector(state => state.dashboard.totalAccounts)
     const decPrice = useSelector(state => state.dashboard.decPrice)
     const spsPrice = useSelector(state => state.dashboard.spsPrice)
@@ -12,6 +16,55 @@ const Dashboard = () => {
     const totalSps = useSelector(state => state.dashboard.totalSps)
     const totalStake = useSelector(state => state.dashboard.totalStake)
     const one = 1
+    const accounts = useSelector((state)=> state.accounts);
+    const localCurrency = window.localStorage.getItem("currency");
+
+    //calculate total
+    let total_accounts = 0;
+    let total_chaos = 0;
+    let total_credits = 0;
+    let total_dec = 0;
+    let total_sps = 0;
+    let total_ssps = 0;
+    let total_dec_price = 0;
+    let total_sps_price = 0;
+    let total_ssps_price = 0;
+    let total_credits_price = 0;
+
+    accounts.forEach(a => {
+        total_accounts ++;
+        total_dec += a.dec;
+        total_sps += a.sps;
+        total_ssps += a.s_sps;
+        total_credits += a.credits;
+        total_chaos += a.chaos;
+    })
+
+    dispatch(DashboardSlice.actions.setAccount(total_accounts))
+    dispatch(DashboardSlice.actions.setChaos(total_chaos))
+    dispatch(DashboardSlice.actions.setCredits(total_credits))
+    dispatch(DashboardSlice.actions.setDec(total_dec))
+    dispatch(DashboardSlice.actions.setSps(total_sps))
+    dispatch(DashboardSlice.actions.setStake(total_ssps))
+    
+    
+    useEffect(() => {
+        CoinGecoPriceApi("splinterlands")
+        .then((data) => {
+            dispatch(DashboardSlice.actions.setSpsPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
+        }); 
+
+        CoinGecoPriceApi("dark-energy-crystals")
+        .then((data) => {
+            dispatch(DashboardSlice.actions.setDecPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
+        }); 
+        
+    }, [localCurrency])
+
+    total_dec_price = decPrice * totalDec
+    total_sps_price = spsPrice * totalSps
+    total_ssps_price = spsPrice + totalStake
+    total_credits_price = totalCredits / 1000
 
     return (
         <>
@@ -37,7 +90,7 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>DEC Price</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
-                                <p id="decPrice">{decPrice}</p>
+                                <p id="decPrice">{decPrice.toFixed(5)} {localCurrency.toLocaleUpperCase()}</p>
                                 <br/>
                             </div>
                             <div className="w3-clear"></div>
@@ -49,7 +102,7 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>SPS Price</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
-                                <p id="spsPrice">{spsPrice}</p>
+                                <p id="spsPrice">{spsPrice.toFixed(5)} {localCurrency.toLocaleUpperCase()}</p>
                                 <br/>
                             </div>
                             <div className="w3-clear"></div>
@@ -73,8 +126,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'> TOTAL CREDITS</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
-                                <p id="credits">{totalCredits}</p>
-                                <span id="creditsCurrency">(0.00)</span>
+                                <p id="credits">{totalCredits.toFixed(5)}</p>
+                                <span id="creditsCurrency">{total_credits_price.toFixed(5)} USD</span>
                             </div>
                             <div className="w3-clear"></div>
                         </div>
@@ -85,8 +138,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>TOTAL DEC</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
-                                <p id="dec">{totalDec}</p>
-                                <span id="decCurrency">(0.00)</span>
+                                <p id="dec">{totalDec.toFixed(5)}</p>
+                                <span id="decCurrency">{total_dec_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                             <div className="w3-clear"></div>
                     </div>
@@ -97,8 +150,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>TOTAL SPS</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
-                                <p id="sps">{totalSps}</p>
-                                <span id="spsCurrency">(0.00)</span>
+                                <p id="sps">{totalSps.toFixed(5)}</p>
+                                <span id="spsCurrency">{total_sps_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                             <div className="w3-clear"></div>
                         </div>
@@ -109,8 +162,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>TOTAL STAKED</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
-                                <p id="spsp">{totalStake}</p>
-                                <span id="spspCurrency">(0.00)</span>
+                                <p id="spsp">{totalStake.toFixed(5)}</p>
+                                <span id="spspCurrency">{total_ssps_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                         <div className="w3-clear"></div>
                     </div>

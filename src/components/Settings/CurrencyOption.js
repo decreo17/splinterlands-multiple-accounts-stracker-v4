@@ -21,6 +21,7 @@ const onchangeHandler = () => {
 }
 
 const CurrencyOption = () => {
+   
     useEffect(() => {
         const localCurrency = window.localStorage.getItem("currency");
         localCurrency ? document.getElementById("currency").value = localCurrency : document.getElementById("currency").value = "USD" && 
