@@ -4,6 +4,9 @@ import WildWithBattles from './WildWithBattles'
 import UpdateAccounts from '../Accounts/UpdateAccounts'
 import LoadAccounts from '../Accounts/LoadAccounts'
 import ModernWithBattles from './ModernWithBattles'
+//for toast
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AccountsMainTable = () => {
     const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
@@ -12,6 +15,7 @@ const AccountsMainTable = () => {
 
     const clearAccountsButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
         //alert("clear all accounts")
+        
     }}>CLEAR</button>
 
     return (

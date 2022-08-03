@@ -59,11 +59,11 @@ const Dashboard = () => {
             dispatch(DashboardSlice.actions.setDecPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
         }); 
         
-    }, [localCurrency])
+    }, [localCurrency, totalAccounts])
 
     total_dec_price = decPrice * totalDec
     total_sps_price = spsPrice * totalSps
-    total_ssps_price = spsPrice + totalStake
+    total_ssps_price = spsPrice * totalStake
     total_credits_price = totalCredits / 1000
 
     return (
@@ -102,7 +102,7 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>SPS Price</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
-                                <p id="spsPrice">{spsPrice.toFixed(5)} {localCurrency.toLocaleUpperCase()}</p>
+                                <p id="spsPrice">{spsPrice.toFixed(2)} {localCurrency.toLocaleUpperCase()}</p>
                                 <br/>
                             </div>
                             <div className="w3-clear"></div>
@@ -127,7 +127,7 @@ const Dashboard = () => {
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
                                 <p id="credits">{totalCredits.toFixed(5)}</p>
-                                <span id="creditsCurrency">{total_credits_price.toFixed(5)} USD</span>
+                                <span id="creditsCurrency">{total_credits_price.toFixed(2)} USD</span>
                             </div>
                             <div className="w3-clear"></div>
                         </div>
@@ -139,7 +139,7 @@ const Dashboard = () => {
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
                                 <p id="dec">{totalDec.toFixed(5)}</p>
-                                <span id="decCurrency">{total_dec_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
+                                <span id="decCurrency">{total_dec_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                             <div className="w3-clear"></div>
                     </div>
@@ -150,8 +150,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>TOTAL SPS</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
-                                <p id="sps">{totalSps.toFixed(5)}</p>
-                                <span id="spsCurrency">{total_sps_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
+                                <p id="sps">{totalSps.toFixed(3)}</p>
+                                <span id="spsCurrency">{total_sps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                             <div className="w3-clear"></div>
                         </div>
@@ -162,8 +162,8 @@ const Dashboard = () => {
                             <p className='card-header w3-center'>TOTAL STAKED</p>
                             <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
-                                <p id="spsp">{totalStake.toFixed(5)}</p>
-                                <span id="spspCurrency">{total_ssps_price.toFixed(5)} {localCurrency.toLocaleUpperCase()}</span>
+                                <p id="spsp">{totalStake.toFixed(3)}</p>
+                                <span id="spspCurrency">{total_ssps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                         <div className="w3-clear"></div>
                     </div>

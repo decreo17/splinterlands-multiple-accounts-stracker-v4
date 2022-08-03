@@ -1,8 +1,10 @@
 import React from 'react'
 import { func, string } from 'prop-types';
 
+
 const Toggle = ({ theme, toggleTheme }) => {
     //const isLight = theme === 'light';
+    
     return (
         <div className="w3-padding" id="themes-settings">
             <input type="button" id="themes-settings-button" value={theme.toUpperCase() + " MODE"} 

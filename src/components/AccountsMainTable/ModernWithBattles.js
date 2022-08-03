@@ -3,19 +3,29 @@ import AccountSlice from '../../slices/account-slice'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
 import { deleteAccountFromLocalStorage } from '../../utils/deleteAccountFromLocalStorage'
 import $ from 'jquery';
+import { useEffect } from 'react';
+import 'bootstrap'
 
 const ModernWithBattles = () => {
-
+    const localTheme = window.localStorage.getItem('theme');
     const dispatch = useDispatch()
     const accounts = useSelector((state)=> state.accounts);
     
     //fitler is not yet working, need to find better sort and filter
     $("#search").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#jsonTable tr").filter(function() {
+        $("#jsonTableModern tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+
+    useEffect(() => {
+        if(localTheme === 'light') {
+            console.log(localTheme)
+            $("#jsonTableModern").removeClass("table-dark ");
+        }
+    })
+
    
     return (
         <div id="main1" className="w3-responsive card">
@@ -27,7 +37,7 @@ const ModernWithBattles = () => {
             <div id="collapseTwo" className="collapse show" data-bs-parent="#accordion">
                 <div className="card-body">
                     <input tabIndex="6" className="w3-input w3-border w3-padding" type="text" placeholder="Search for username.." id="search" />
-                    <table id="jsonTable" className="w3-text-black w3-table-all darkMode w3-hoverable display">
+                    <table id="jsonTableModern" className="w3-hoverable display table table-dark table-striped">
                         <thead>
                             <tr id="trAccounts" className="w3-dark-grey">
                                 <th >#</th>
@@ -52,11 +62,11 @@ const ModernWithBattles = () => {
                                     <td>{a.username}</td>
                                     <td>{`${a.ecr}%`}</td>
                                     <td>{a.modern_rank}</td>
-                                    <td>{a.modern_rating.toLocaleString()}</td>
-                                    <td>{a.power.toLocaleString()}</td>
-                                    <td>{a.dec.toLocaleString()}</td>
-                                    <td>{a.sps.toLocaleString()}</td>
-                                    <td>{a.s_sps.toLocaleString()}</td>
+                                    <td>{a.modern_rating}</td>
+                                    <td>{a.power}</td>
+                                    <td>{a.dec}</td>
+                                    <td>{a.sps}</td>
+                                    <td>{a.s_sps}</td>
                                     <td>{a.modern_last_team}</td>
                                     <td>W: {a.modern_winCount} D: {a.modern_drawCount} L: {50 - a.modern_winCount - a.modern_drawCount} 
                                             <br/> WinRate {((a.modern_winCount/50)*100).toFixed(2)}% 

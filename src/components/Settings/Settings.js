@@ -14,6 +14,14 @@ class Settings extends Component {
                 document.getElementById('settings-holder').style.display="none"
             }
         });
+
+        const autoLoad = <div className="w3-padding" id="load-settings">
+                            <label className="switch">
+                                <input id="autoLoad-accounts" type="checkbox" value="off" onClick={AutoLoadBox} />
+                                <span className="slider round"></span>
+                            </label>
+                            <span id="auto-load-text" className="w3-text-black">Auto Load Accounts</span>
+                        </div>
     
     return (
         <div className="w3-modal" style={{display:"none"}} id="settings-holder">
@@ -26,14 +34,7 @@ class Settings extends Component {
                 
                 <CurrencyOption />
                 <Themes />
-                <div className="w3-padding" id="load-settings">
-                    <label className="switch">
-                        <input id="autoLoad-accounts" type="checkbox" value="off" onClick={AutoLoadBox} />
-                        <span className="slider round"></span>
-                    </label>
-                    <span id="auto-load-text" className="w3-text-black">Auto Load Accounts</span>
-                </div>
-
+                
                 <footer className="w3-container w3-round">
                     <p>For donations please send it to: <i className="w3-red">Dadee</i> or <i className="w3-red">Decreo</i> 
                     in-game or via hive</p>

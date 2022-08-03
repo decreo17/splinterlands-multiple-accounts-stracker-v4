@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.body};
   }
 
+
   :root {
     --toastify-toast-background: ${({ theme }) => theme.body};
   }

@@ -4,12 +4,23 @@ import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 import { useDarkMode } from './useDarkMode';
 import Toggle from './Toggle';
+import $ from 'jquery';
 
 // The function that toggles between themes
 function Themes() {
     const [theme, toggleTheme, componentMounted] = useDarkMode();
   
     const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+    //do the add/remove class here for themes
+    if(theme === 'light'){
+      console.log(theme + " this")
+      $("#jsonTableModern").removeClass("table-dark ");
+      $("#jsonTableWild").removeClass("table-dark ");
+    } else {
+      $("#jsonTableModern").addClass("table-dark ");
+      $("#jsonTableWild").addClass("table-dark ");
+    }
   
     if (!componentMounted) {
       return <div />
