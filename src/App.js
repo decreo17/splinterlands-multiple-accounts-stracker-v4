@@ -11,6 +11,7 @@ import SeasonBanner from './components/SeasonBanner/SeasonBanner';
 import AccountsMainTable from './components/AccountsMainTable/AccountsMainTable'
 import AddAccount from './components/Accounts/AddAccount';
 import { ToastContainer } from 'react-toastify';
+import QuestTable from './components/QuestTable/QuestTable';
 
 const App = () => {
 
@@ -36,6 +37,7 @@ const App = () => {
       />
       <Header />
       <AccountsMainTable />
+      <QuestTable />
       <Footer />
       </div>
     </>

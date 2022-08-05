@@ -28,13 +28,13 @@ const WildWithBattles = () => {
     })
    
     return (
-        <div id="main1" className="w3-responsive card">
+        <div id="mainWild" className="w3-responsive card">
             <div className="card-header text-center">
                 <a className="btn bg-gradient" data-bs-toggle="collapse" href="#collapseOne">
                     WILD
                 </a>
             </div>
-            <div id="collapseOne" className="collapse show" data-bs-parent="#accordion">
+            <div id="collapseOne" className="collapse hide" data-bs-parent="#accordion">
                 <div className="card-body">
                     <input tabIndex="6" className="w3-input w3-border w3-padding" type="text" placeholder="Search for username.." id="search" />
                     <table id="jsonTableWild" className="w3-hoverable display table table-dark table-striped">

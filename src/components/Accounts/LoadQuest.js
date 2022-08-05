@@ -1,16 +1,19 @@
-import './LoadAccounts.css'
-import LoadingSlice from '../../slices/loadingSlice';
-import { useDispatch } from 'react-redux';
-import { getAccountDetails } from './UpdateAccounts';
-import AccountSlice from '../../slices/account-slice';
+import './LoadQuest.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingSlice from '../../slices/loadingSlice';
+import { getQuestDetails } from './UpdateQuests';
+import QuestSlice from '../../slices/quest-slice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const LoadAccounts = () => {
+const LoadQuest = () => {
     const dispatch = useDispatch()
+    const settings = useSelector((state) => state.settings.splinterlands_settings)
+    console.log(settings)
     dispatch(LoadingSlice.actions.isLoading(true))
-    const loadAccountsFromLocalStorage = async () => {
-        dispatch(AccountSlice.actions.reset())
+    const loadQuestFromAccountsInLocalStorage = async () => {
+        dispatch(QuestSlice.actions.reset())
+        
         let usernames = [];
         let local = localStorage.getItem("accounts");
         if (local == null || !local) {      
@@ -30,10 +33,10 @@ const LoadAccounts = () => {
             (async () => {
                 for (let user of usernames) {
                     try {
-                        await getAccountDetails(user)
+                        await getQuestDetails(user, settings)
                         .then(data => {
                             dispatch(LoadingSlice.actions.isLoading(true))
-                            dispatch(AccountSlice.actions.addAccount(data))
+                            dispatch(QuestSlice.actions.addAccount(data))
                         })
                 } catch (e) {
                     console.log("There was an error while processing " + user + "\n" + e)
@@ -65,10 +68,11 @@ const LoadAccounts = () => {
     }
 
     return (
-        <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
-            loadAccountsFromLocalStorage()
-        }}>LOAD Accounts</button>                    
+        <button id='load-quest' className="btn-sm btn-success m-1" onClick={()=> {
+            loadQuestFromAccountsInLocalStorage()
+        }}>LOAD Quest</button>                    
     )
+
 }
 
-export default LoadAccounts
+export default LoadQuest

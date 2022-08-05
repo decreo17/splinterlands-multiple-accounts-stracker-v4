@@ -47,5 +47,16 @@ export const getPlayerBattleHistoryModern = async (player) => {
   }
 }
 
+export const getCurrentQuest = async (player) => {
+  let res 
+  try {
+      res = await $.getJSON(`${api}/players/quests?username=${player}`);
+      console.log("Splinterlands API called getCurrentQuest")
+      return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 export default getPlayerData

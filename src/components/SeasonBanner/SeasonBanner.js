@@ -6,6 +6,7 @@ import { setDays, setHours, setMinutes, setSeconds, setSeasonName } from '../../
 import React, { useEffect } from "react";
 import RewardPools from '../rewardPools/rewardPools';
 import LoadingSlice from '../../slices/loadingSlice';
+import SettingsSlice from '../../slices/settingsSlice';
 
 const SeasonBanner = () => {
     const days = useSelector((state) => state.season.days)
@@ -19,7 +20,7 @@ const SeasonBanner = () => {
         dispatch(LoadingSlice.actions.isLoading(true))
         const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
         settingsApi.then(data => {
-            
+            dispatch(SettingsSlice.actions.setSplinterlandsSettings(data))
             let birthday = data.season.ends,
                 countDown = new Date(birthday).getTime()
             let x = setInterval(() => {
