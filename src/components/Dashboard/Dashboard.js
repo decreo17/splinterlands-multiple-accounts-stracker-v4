@@ -40,12 +40,16 @@ const Dashboard = () => {
         total_chaos += a.chaos;
     })
 
-    dispatch(DashboardSlice.actions.setAccount(total_accounts))
-    dispatch(DashboardSlice.actions.setChaos(total_chaos))
-    dispatch(DashboardSlice.actions.setCredits(total_credits))
-    dispatch(DashboardSlice.actions.setDec(total_dec))
-    dispatch(DashboardSlice.actions.setSps(total_sps))
-    dispatch(DashboardSlice.actions.setStake(total_ssps))
+    useEffect(() => {
+        dispatch(DashboardSlice.actions.setAccount(total_accounts))
+        dispatch(DashboardSlice.actions.setChaos(total_chaos))
+        dispatch(DashboardSlice.actions.setCredits(total_credits))
+        dispatch(DashboardSlice.actions.setDec(total_dec))
+        dispatch(DashboardSlice.actions.setSps(total_sps))
+        dispatch(DashboardSlice.actions.setStake(total_ssps))
+
+    }, [])
+    
     
     
     useEffect(() => {

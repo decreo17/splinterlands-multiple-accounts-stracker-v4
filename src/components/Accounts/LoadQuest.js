@@ -5,12 +5,16 @@ import LoadingSlice from '../../slices/loadingSlice';
 import { getQuestDetails } from './UpdateQuests';
 import QuestSlice from '../../slices/quest-slice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const LoadQuest = () => {
     const dispatch = useDispatch()
     const settings = useSelector((state) => state.settings.splinterlands_settings)
-    console.log(settings)
-    dispatch(LoadingSlice.actions.isLoading(true))
+
+    useEffect(() => {
+        dispatch(LoadingSlice.actions.isLoading(true))
+    }, [])
+    
     const loadQuestFromAccountsInLocalStorage = async () => {
         dispatch(QuestSlice.actions.reset())
         

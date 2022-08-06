@@ -12,7 +12,7 @@ const QuestTable = () => {
     const accounts = useSelector((state)=> state.quest);
     
     //fitler is not yet working, need to find better sort and filter
-    $("#searchWildQuest").on("keyup", function() {
+    $("#collapssearchQuesteQuest").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#questTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -29,18 +29,13 @@ const QuestTable = () => {
     return (
 
         <div id="questTableCard" className="w3-responsive card">
-            <div className="card-header text-center">
-                <a className="btn bg-gradient" data-bs-toggle="collapse" href="#collapseWildQuest">
-                    Quest
-                </a>
-            </div>
             <div className="w3-container"  id="quest">
-                <div id="collapseWildQuest" className="collapse hide" data-bs-parent="#accordion">
+                    <br/>
                     <h5><b><i><FontAwesomeIcon icon={faBinoculars}/></i> Quest:</b></h5>
                     <div>
                         <LoadQuest/>
                     </div>
-                    <input tabIndex="8" className="w3-input w3-border w3-padding" type="text" placeholder="Search.." id="searchWildQuest" />
+                    <input tabIndex="8" className="w3-input w3-border w3-padding" type="text" placeholder="Search.." id="collapssearchQuesteQuest" />
                     <div className="w3-responsive">
                         <table id="questTable" className="w3-hoverable display table table-dark table-striped">
                             <thead>
@@ -60,12 +55,15 @@ const QuestTable = () => {
                                         <td>{a.username}</td>
                                         <td>{a.focus}</td>
                                         <td>{a.questCompleted} | Daily Chest: {a.chest} </td>
-                                        <td>Progress: {Math.round(a.rshares - a.prev_total_rShares)} / 
-                                            {Math.round(a.chest_rShares - a.prev_total_rShares)}<span>  </span> 
+                                        <td>
                                             <progress className="chest_progress" value={Math.round(a.rshares - a.prev_total_rShares)} 
                                                 max={Math.round(a.chest_rShares - a.prev_total_rShares)}> 
                                                 {Math.round(a.rshares - a.prev_total_rShares)/Math.round(a.chest_rShares - a.prev_total_rShares)}
                                             </progress>
+                                            <span>  </span> 
+                                            {Math.round(a.rshares - a.prev_total_rShares)} / 
+                                            {Math.round(a.chest_rShares - a.prev_total_rShares)}
+
                                         </td>
                                         <td>{a.questClaimed}</td>
                                     </tr>
@@ -73,7 +71,7 @@ const QuestTable = () => {
                             </tbody>
                         </table><br/>
                     </div>
-                </div>
+                
             </div>
         </div>
     )

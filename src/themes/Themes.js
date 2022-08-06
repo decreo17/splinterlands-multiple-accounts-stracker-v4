@@ -17,13 +17,13 @@ function Themes() {
       console.log(theme + " this")
       $("#jsonTableModern").removeClass("table-dark ");
       $("#jsonTableWild").removeClass("table-dark ");
-      $("#questTableWild").removeClass("table-dark ");
-      $("#questTableModern").removeClass("table-dark ");
+      $("#questTable").removeClass("table-dark ");
+    
     } else {
       $("#jsonTableModern").addClass("table-dark ");
       $("#jsonTableWild").addClass("table-dark ");
-      $("#questTableWild").addClass("table-dark ");
-      $("#questTableModern").addClass("table-dark ");
+      $("#questTable").addClass("table-dark ");
+  
     }
   
     if (!componentMounted) {

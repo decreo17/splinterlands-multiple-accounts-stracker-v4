@@ -31,6 +31,7 @@ export const getAccountDetails = async(username) => {
     let chaos = 0;
     let gold_potion = 0;
     let legend_potion = 0;
+    let merits = 0
     let last_team = "no battle";
     let win_rate = "";
     let last_battle = "no battle";
@@ -96,6 +97,7 @@ export const getAccountDetails = async(username) => {
             else if (account.token === "LEGENDARY") legend_potion = account.balance
             else if (account.token === "CHAOS") chaos = account.balance
             else if (account.token === "CREDITS") credits = account.balance
+            else if (account.token === 'MERITS') merits = account.balance
         })
     })
     .catch(err => {
@@ -303,7 +305,8 @@ export const getAccountDetails = async(username) => {
         voucher                 : voucher, 
         chaos                   : chaos,
         gold_potion             : gold_potion, 
-        legend_potion           : legend_potion, 
+        legend_potion           : legend_potion,
+        merits                  : merits, 
         last_team               : last_team, 
         win_rate                : win_rate, 
         last_battle             : last_battle,

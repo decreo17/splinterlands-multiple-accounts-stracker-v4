@@ -37,7 +37,6 @@ const App = () => {
       />
       <Header />
       <AccountsMainTable />
-      <QuestTable />
       <Footer />
       </div>
     </>

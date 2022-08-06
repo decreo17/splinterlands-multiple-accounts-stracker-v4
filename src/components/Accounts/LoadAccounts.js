@@ -67,7 +67,7 @@ const LoadAccounts = () => {
     return (
         <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
             loadAccountsFromLocalStorage()
-        }}>LOAD Accounts</button>                    
+        }}>LOAD ACCOUNTS</button>                    
     )
 }
 
