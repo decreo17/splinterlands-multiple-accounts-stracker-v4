@@ -10,15 +10,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuestTable from '../QuestTable/QuestTable'
+import { useDispatch } from 'react-redux'
+import AccountSlice from '../../slices/account-slice'
 
 const AccountsMainTable = () => {
+    const dispatch = useDispatch()
     const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
         document.getElementById('add-account-modal').style.display='block'
     }}>ADD</button>
 
     const clearAccountsButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
-        //alert("clear all accounts")
-        
+        window.localStorage.removeItem("accounts");
+        dispatch(AccountSlice.actions.reset());
     }}>CLEAR</button>
 
     return (
@@ -50,7 +53,6 @@ const AccountsMainTable = () => {
                     <QuestTable/>
                 </div>
             </div>
-            
         </>
     )
 }
