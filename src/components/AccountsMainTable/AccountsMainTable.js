@@ -29,15 +29,17 @@ const AccountsMainTable = () => {
                 {clearAccountsButton}
             </div>
             
+            <br/>
+
             <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="component-battles-tab" data-bs-toggle="tab" data-bs-target="#component-battles" type="button" role="tab" aria-controls="component-battles" aria-selected="true">Battles</button>
-                    <button class="nav-link" id="component-balance-tab" data-bs-toggle="tab" data-bs-target="#component-balance" type="button" role="tab" aria-controls="component-balance" aria-selected="false">Balances</button>
-                    <button class="nav-link" id="component-quest-tab" data-bs-toggle="tab" data-bs-target="#component-quest" type="button" role="tab" aria-controls="component-quest" aria-selected="false">Quest</button>
+                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button className="nav-link active" id="component-battles-tab" data-bs-toggle="tab" data-bs-target="#component-battles" type="button" role="tab" aria-controls="component-battles" aria-selected="true">Battles</button>
+                    <button className="nav-link" id="component-balance-tab" data-bs-toggle="tab" data-bs-target="#component-balance" type="button" role="tab" aria-controls="component-balance" aria-selected="false">Balances</button>
+                    <button className="nav-link" id="component-quest-tab" data-bs-toggle="tab" data-bs-target="#component-quest" type="button" role="tab" aria-controls="component-quest" aria-selected="false">Quest</button>
                 </div>
             </nav>
 
-            <div class="tab-content">
+            <div className="tab-content">
                 <div id="component-battles" className="tab-pane fade show active">
                     <Battles/>
                 </div>
@@ -48,8 +50,6 @@ const AccountsMainTable = () => {
                     <QuestTable/>
                 </div>
             </div>
-          
-            
             
         </>
     )

@@ -5,10 +5,15 @@ import { getAccountDetails } from './UpdateAccounts';
 import AccountSlice from '../../slices/account-slice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 const LoadAccounts = () => {
     const dispatch = useDispatch()
-    dispatch(LoadingSlice.actions.isLoading(true))
+
+    useEffect(() => {
+        dispatch(LoadingSlice.actions.isLoading(true))
+    })
+    
     const loadAccountsFromLocalStorage = async () => {
         dispatch(AccountSlice.actions.reset())
         let usernames = [];
