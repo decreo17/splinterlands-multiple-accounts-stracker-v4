@@ -72,7 +72,7 @@ const LoadAccounts = () => {
     return (
         <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
             loadAccountsFromLocalStorage()
-        }}>LOAD ACCOUNTS</button>                    
+        }}>LOAD/REFRESH ACCOUNTS</button>                    
     )
 }
 

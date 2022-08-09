@@ -10,11 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuestTable from '../QuestTable/QuestTable'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AccountSlice from '../../slices/account-slice'
 
 const AccountsMainTable = () => {
     const dispatch = useDispatch()
+    const quest = useSelector((state)=> state.quest);
+
     const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
         document.getElementById('add-account-modal').style.display='block'
     }}>ADD</button>
@@ -38,7 +40,14 @@ const AccountsMainTable = () => {
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <button className="nav-link active" id="component-battles-tab" data-bs-toggle="tab" data-bs-target="#component-battles" type="button" role="tab" aria-controls="component-battles" aria-selected="true">Battles</button>
                     <button className="nav-link" id="component-balance-tab" data-bs-toggle="tab" data-bs-target="#component-balance" type="button" role="tab" aria-controls="component-balance" aria-selected="false">Balances</button>
-                    <button className="nav-link" id="component-quest-tab" data-bs-toggle="tab" data-bs-target="#component-quest" type="button" role="tab" aria-controls="component-quest" aria-selected="false">Quest</button>
+                    <button className="nav-link" id="component-quest-tab" data-bs-toggle="tab" data-bs-target="#component-quest" type="button" role="tab" aria-controls="component-quest" aria-selected="false"
+                        onClick={() => {
+
+                            if(!quest.length > 0) {
+                                document.getElementById('load-quest').click()
+                            }
+                            
+                        }}>Quest</button>
                 </div>
             </nav>
 
