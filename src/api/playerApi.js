@@ -58,5 +58,16 @@ export const getCurrentQuest = async (player) => {
   }
 }
 
+export const getCurrentRewards = async (player) => {
+  let res 
+  try {
+      res = await $.getJSON(`${api}/players/current_rewards?username=${player}`);
+      console.log("Splinterlands API called getCurrentRewards")
+      return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 export default getPlayerData

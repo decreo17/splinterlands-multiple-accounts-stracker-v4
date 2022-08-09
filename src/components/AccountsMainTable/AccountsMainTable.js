@@ -38,16 +38,27 @@ const AccountsMainTable = () => {
 
             <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button className="nav-link active" id="component-battles-tab" data-bs-toggle="tab" data-bs-target="#component-battles" type="button" role="tab" aria-controls="component-battles" aria-selected="true">Battles</button>
-                    <button className="nav-link" id="component-balance-tab" data-bs-toggle="tab" data-bs-target="#component-balance" type="button" role="tab" aria-controls="component-balance" aria-selected="false">Balances</button>
-                    <button className="nav-link" id="component-quest-tab" data-bs-toggle="tab" data-bs-target="#component-quest" type="button" role="tab" aria-controls="component-quest" aria-selected="false"
+                    <button className="nav-link active" id="component-battles-tab" data-bs-toggle="tab" 
+                        data-bs-target="#component-battles" type="button" role="tab" 
+                        aria-controls="component-battles" aria-selected="true">
+                            Battles
+                    </button>
+                    <button className="nav-link" id="component-balance-tab" data-bs-toggle="tab" 
+                        data-bs-target="#component-balance" type="button" role="tab" 
+                        aria-controls="component-balance" aria-selected="false">
+                            Balances
+                    </button>
+                    <button className="nav-link" id="component-quest-tab" data-bs-toggle="tab" 
+                        data-bs-target="#component-quest" type="button" role="tab" 
+                        aria-controls="component-quest" aria-selected="false"
                         onClick={() => {
 
                             if(!quest.length > 0) {
                                 document.getElementById('load-quest').click()
                             }
                             
-                        }}>Quest</button>
+                        }}> Quest
+                    </button>
                 </div>
             </nav>
 

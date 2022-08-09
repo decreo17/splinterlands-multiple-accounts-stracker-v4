@@ -18,11 +18,13 @@ function Themes() {
       $("#jsonTableModern").removeClass("table-dark ");
       $("#jsonTableWild").removeClass("table-dark ");
       $("#questTable").removeClass("table-dark ");
+      $("#seasonTable").removeClass("table-dark ");
     
     } else {
       $("#jsonTableModern").addClass("table-dark ");
       $("#jsonTableWild").addClass("table-dark ");
       $("#questTable").addClass("table-dark ");
+      $("#seasonTable").addClass("table-dark ");
   
     }
   

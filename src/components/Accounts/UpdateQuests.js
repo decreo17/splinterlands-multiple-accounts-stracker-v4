@@ -1,17 +1,16 @@
 /**
  * This will be use to update the QuestSlice to have the account details
  */
-import { getCurrentQuest } from '../../api/playerApi';
+import { getCurrentRewards } from '../../api/playerApi';
 
 //for toast
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;    
+const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;   
 
 export const getQuestDetails = async(username, settings) => {
     var questName = ""
-    var questCompleted = 0
     var claimedId = ""
     var questClaimed = ""
     var chestTier = ""
@@ -29,23 +28,32 @@ export const getQuestDetails = async(username, settings) => {
     var prev_total_rShares = 0
     var chest = 0
     var focus = ""
+    //season
+    var seasonRshares = 0
+    var seasonChestTeir = ""
+    var seasonMax = 150
+    var seasonChestEarned = 0
+    var seasonBase = 0
+    var seasonChestLoot = ""
+    var season_step_multiplier = 0
+    var season_chest_rShares = 0
+    var season_prev_total_rShares = 0
     
-    await getCurrentQuest(username)
+    await getCurrentRewards(username)
     .then((data) => {
-        
+        var questData = data.quest_reward_info
+
         var dailyQuest = settings.daily_quests
         
         dailyQuest.forEach(quest => {
-          if(quest.name === data[0].name) questName = quest.data.value
+          if(quest.name === questData.name) questName = quest.data.value
         });
 
-        questCompleted = data[0].completed_items
-        claimedId = data[0].claim_trx_id
-        questClaimed = data[0].claim_date
-        chestTier = data[0].chest_tier
-        rshares = data[0].rshares
-        chestLoot = ""
-        startTime = new Date(data[0].created_date).getTime() + 86400000
+        claimedId = questData.claim_trx_id
+        questClaimed = questData.claim_date
+        chestTier = questData.chest_tier
+        rshares = questData.rshares
+        startTime = new Date(questData.created_date).getTime() + 86400000
         now = new Date().getTime()
         distance = startTime - now
         hours = Math.floor((distance % (day)) / (hour))
@@ -53,19 +61,19 @@ export const getQuestDetails = async(username, settings) => {
 
         /*chest calculator*/
         var league = []
-        if (chestTier == 0) {
+        if (chestTier === 0) {
           league = settings.loot_chests.quest[0]
           chestLoot = "Bronze"
-        } else if (chestTier == 1) {
+        } else if (chestTier === 1) {
           league = settings.loot_chests.quest[1]
           chestLoot = "Silver"
-        } else if (chestTier == 2) {
+        } else if (chestTier === 2) {
           league = settings.loot_chests.quest[2]
           chestLoot = "Gold"
-        } else if (chestTier == 3) {
+        } else if (chestTier === 3) {
           league = settings.loot_chests.quest[3]
           chestLoot = "Diamond"
-        } else if (chestTier == 4) {
+        } else if (chestTier === 4) {
           league = settings.loot_chests.quest[4]
           chestLoot = "Champion"
         } else {
@@ -81,7 +89,6 @@ export const getQuestDetails = async(username, settings) => {
             theme: "colored"
             });
         }
-        console.log("league " + league)
 
         base = league.base
         max = league.max
@@ -100,34 +107,15 @@ export const getQuestDetails = async(username, settings) => {
         /*End*/
 
         try {
-            if(claimedId == null) {
-              claimedId = ""
+          if(questClaimed == null) {
+            if (hours < 0) {
+              questClaimed = "Request new focus/Claim your chest"
             } else {
-              claimedId = " ID: " + claimedId;
+              questClaimed = `${hours}:${minutes} (HRS:MIN)`
             }
-        } catch (e) {
-          toast.error('There was an error with getting the quest for ' + username, {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored"
-            });
-        }
-
-        try {
-            if(questClaimed == null) {
-              if (hours < 0) {
-                questClaimed = "Request new focus/Claim your chest"
-              } else {
-                questClaimed = `${hours}:${minutes} (HRS:MIN)`
-              }
-            } else {
-                questClaimed = new Date(questClaimed);
-            }
+          } else {
+              questClaimed = new Date(questClaimed);
+          }
 
         } catch (e) {
           toast.error('There was an error with getting the quest for ' + username, {
@@ -141,8 +129,57 @@ export const getQuestDetails = async(username, settings) => {
             theme: "colored"
             });
         }
+          
+        focus = questName + " : " + chestLoot + " Chest" ;  
+        
+        /*Season*/
+        var seasonData = data.season_reward_info
+        console.log(data)
+        seasonRshares = seasonData.rshares
+        seasonChestEarned = seasonData.chest_earned
+        seasonChestTeir = seasonData.chest_tier
 
-        focus = questName + " : " + chestLoot + " Chest" ;
+        /*season chest calculator*/
+        var seasonLeague = []
+        if (seasonChestTeir === 0) {
+          seasonLeague = settings.loot_chests.season[0]
+          seasonChestLoot = "Bronze"
+        } else if (seasonChestTeir === 1) {
+          seasonLeague = settings.loot_chests.season[1]
+          seasonChestLoot = "Silver"
+        } else if (seasonChestTeir === 2) {
+          seasonLeague = settings.loot_chests.season[2]
+          seasonChestLoot = "Gold"
+        } else if (seasonChestTeir === 3) {
+          seasonLeague = settings.loot_chests.season[3]
+          seasonChestLoot = "Diamond"
+        } else if (seasonChestTeir === 4) {
+          seasonLeague = settings.loot_chests.season[4]
+          seasonChestLoot = "Champion"
+        } else {
+          console.log("There was an error with season tier")
+          toast.error('There was an error with getting the season tier for ' + username, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored"
+            });
+        }
+
+        seasonBase = seasonLeague.base
+        season_step_multiplier = seasonLeague.step_multiplier
+        season_chest_rShares = seasonBase
+        
+        while (seasonRshares >= season_chest_rShares) {
+          season_prev_total_rShares = season_chest_rShares
+          season_chest_rShares = (season_chest_rShares *= season_step_multiplier) + seasonBase
+        }
+        /*End*/
+
     })
     .catch(err => {
         console.error(err);
@@ -160,26 +197,34 @@ export const getQuestDetails = async(username, settings) => {
     });
 
     return {
-        username            : username,
-        questName           : questName,
-        questCompleted      : questCompleted,
-        claimedId           : claimedId,
-        questClaimed        : questClaimed,
-        chestTier           : chestTier,
-        rshares             : rshares,
-        chestLoot           : chestLoot,
-        startTime           : startTime,
-        now                 : now,
-        distance            : distance,
-        hours               : hours,
-        minutes             : minutes,
-        base                : base,
-        max                 : max,
-        step_multiplier     : step_multiplier,
-        chest_rShares       : chest_rShares,
-        prev_total_rShares  : prev_total_rShares,
-        chest               : chest,
-        focus               : focus
+        username                  : username,
+        questName                 : questName,
+        claimedId                 : claimedId,
+        questClaimed              : questClaimed,
+        chestTier                 : chestTier,
+        rshares                   : rshares,
+        chestLoot                 : chestLoot,
+        startTime                 : startTime,
+        now                       : now,
+        distance                  : distance,
+        hours                     : hours,
+        minutes                   : minutes,
+        base                      : base,
+        max                       : max,
+        step_multiplier           : step_multiplier,
+        chest_rShares             : chest_rShares,
+        prev_total_rShares        : prev_total_rShares,
+        chest                     : chest,
+        focus                     : focus,
+        seasonRshares             : seasonRshares,
+        seasonChestTeir           : seasonChestTeir,
+        seasonMax                 : seasonMax,
+        seasonChestEarned         : seasonChestEarned,
+        seasonBase                : seasonBase,
+        seasonChestLoot           : seasonChestLoot,
+        season_step_multiplier    : season_step_multiplier,
+        season_chest_rShares      : season_chest_rShares,
+        season_prev_total_rShares : season_prev_total_rShares
     }
     
 }
