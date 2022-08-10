@@ -12,6 +12,7 @@ import AccountsMainTable from './components/AccountsMainTable/AccountsMainTable'
 import AddAccount from './components/Accounts/AddAccount';
 import { ToastContainer } from 'react-toastify';
 import QuestTable from './components/QuestTable/QuestTable';
+import CardLookup from './components/CardLookup/CardLookup';
 
 const App = () => {
 
@@ -37,6 +38,7 @@ const App = () => {
       />
       <Header />
       <AccountsMainTable />
+      <CardLookup/>
       <Footer />
       </div>
     </>

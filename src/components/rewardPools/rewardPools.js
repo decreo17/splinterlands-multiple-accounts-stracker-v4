@@ -28,7 +28,7 @@ const RewardPools = () => {
             <br />
             <span id="reward_pool">Wild Rewards: {wild} </span>
             ||
-            <span id="reward_pool_modern"> Modern Rewards:{modern}</span>
+            <span id="reward_pool_modern"> Modern Rewards: {modern}</span>
         </>
     )
 }

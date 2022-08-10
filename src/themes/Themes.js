@@ -19,12 +19,14 @@ function Themes() {
       $("#jsonTableWild").removeClass("table-dark ");
       $("#questTable").removeClass("table-dark ");
       $("#seasonTable").removeClass("table-dark ");
+      $("#card-lookup-table").removeClass("table-dark ");
     
     } else {
       $("#jsonTableModern").addClass("table-dark ");
       $("#jsonTableWild").addClass("table-dark ");
       $("#questTable").addClass("table-dark ");
       $("#seasonTable").addClass("table-dark ");
+      $("#card-lookup-table").addClass("table-dark ");
   
     }
   

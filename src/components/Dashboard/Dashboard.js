@@ -80,7 +80,7 @@ const Dashboard = () => {
                 <div className="w3-quarter w3-padding">
                     <div className="w3-container w3-round w3-red w3-padding-16">
                         <p className='card-header w3-center'>TOTAL ACCOUNTS</p>
-                        <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faUser}/></i></div>
+                        <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                         <div className="w3-right accounts">
                             <p id="total-accounts">{totalAccounts}</p>
                             <br/>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-purple w3-padding-16">
                             <p className='card-header w3-center'>DEC Price</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
                                 <p id="decPrice">{decPrice.toFixed(5)} {localCurrency.toLocaleUpperCase()}</p>
                                 <br/>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-green w3-padding-16">
                             <p className='card-header w3-center'>SPS Price</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
                                 <p id="spsPrice">{spsPrice.toFixed(2)} {localCurrency.toLocaleUpperCase()}</p>
                                 <br/>
@@ -116,7 +116,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-red w3-padding-16">
                             <p className='card-header w3-center'>TOTAL CHAOS</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faUser}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                             <div className="w3-right accounts">
                                 <p id="total-chaos">{totalChaos}</p>
                                 <br/>
@@ -128,7 +128,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-orange w3-text-white w3-padding-16">
                             <p className='card-header w3-center'> TOTAL CREDITS</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
                                 <p id="credits">{totalCredits.toFixed(5)}</p>
                                 <span id="creditsCurrency">{total_credits_price.toFixed(2)} USD</span>
@@ -140,7 +140,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-purple w3-padding-16">
                             <p className='card-header w3-center'>TOTAL DEC</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
                                 <p id="dec">{totalDec.toFixed(5)}</p>
                                 <span id="decCurrency">{total_dec_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
@@ -152,7 +152,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-green w3-padding-16">
                             <p className='card-header w3-center'>TOTAL SPS</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
                                 <p id="sps">{totalSps.toFixed(3)}</p>
                                 <span id="spsCurrency">{total_sps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
@@ -164,7 +164,7 @@ const Dashboard = () => {
                     <div className="w3-quarter w3-padding">
                         <div className="w3-container w3-round w3-orange w3-text-white w3-padding-16">
                             <p className='card-header w3-center'>TOTAL STAKED</p>
-                            <div className="w3-left"><i className="w3-xxxlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
+                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
                                 <p id="spsp">{totalStake.toFixed(3)}</p>
                                 <span id="spspCurrency">{total_ssps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
