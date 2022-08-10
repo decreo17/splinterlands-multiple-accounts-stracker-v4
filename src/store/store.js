@@ -6,6 +6,7 @@ import DashboardSlice from '../slices/dashboardSlice';
 import AccountSlice from '../slices/account-slice';
 import SettingsSlice from '../slices/settingsSlice';
 import QuestSlice from '../slices/quest-slice';
+import CardDetailstSlice from '../slices/cardDetailsSlice';
 
 const store = configureStore({
     reducer : {
@@ -15,7 +16,8 @@ const store = configureStore({
         dashboard   : DashboardSlice.reducer,
         accounts    : AccountSlice.reducer,
         settings    : SettingsSlice.reducer,
-        quest       : QuestSlice.reducer
+        quest       : QuestSlice.reducer,
+        cardDetails : CardDetailstSlice.reducer
     }
 });
 

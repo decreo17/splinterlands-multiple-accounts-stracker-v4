@@ -1,6 +1,9 @@
 import './CardLookup.css'
 import cardsDetailsJson from "../../json/cardsDetails.json";
 import $ from 'jquery';
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { useEffect } from 'react';
+import CardDetailstSlice from '../../slices/cardDetailsSlice';
 
 const ability = (array, index) => {
     try {
@@ -11,11 +14,23 @@ const ability = (array, index) => {
 }
 
 const CardLookup = ()=> {
+    const dispatch = useDispatch()
+    
+    useEffect(() => {
+        dispatch(CardDetailstSlice.actions.setAccounts(cardsDetailsJson)) 
+    },[])
+
+    const cardDetails = useSelector((state)=> state.cardDetails);
+    /*const refreshButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
+        dispatch(CardDetailstSlice.actions.reset()) 
+        dispatch(CardDetailstSlice.actions.setAccounts(cardsDetailsJson)) 
+
+    }}>REFRESH CARDS</button>*/
 
     $("#card-search-name").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#card-lookup-table tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1)
+          return $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1)
         });
     });
 
@@ -46,7 +61,7 @@ const CardLookup = ()=> {
                         </tr>
                     </thead>
                     <tbody id='lookup-body'>
-                    {cardsDetailsJson.map((a, i) => (
+                    {cardDetails.map((a, i) => (
                         <tr key={i}>
                             <td>{i+1}</td>
                             <td>{a.name}</td>
