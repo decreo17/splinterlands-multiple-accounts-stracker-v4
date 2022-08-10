@@ -6,7 +6,6 @@ const ability = (array, index) => {
     try {
         return array.stats.abilities[index]
     } catch {
-        console.log("catch")
         return array.stats.abilities
     }
 }
@@ -28,7 +27,7 @@ const CardLookup = ()=> {
                 <div style={{display: 'flex'}}>
                     <input style={{width: '50%'}} className="w3-input w3-round w3-border w3-padding" type="text" placeholder="search.." id='card-search-name' />
                 </div>  
-                <table id="card-lookup-table" className="table-bordered w3-hoverable display table table-dark table-striped">
+                <table id="card-lookup-table" className="w3-hoverable display table table-dark table-striped table-bordered">
                     <thead>
                         <tr className="w3-dark-grey sticky-table-head">
                             <th>#</th>
