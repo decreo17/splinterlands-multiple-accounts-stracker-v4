@@ -48,7 +48,7 @@ const Dashboard = () => {
         dispatch(DashboardSlice.actions.setSps(total_sps))
         dispatch(DashboardSlice.actions.setStake(total_ssps))
 
-    }, [])
+    }, [accounts])
     
     
     
