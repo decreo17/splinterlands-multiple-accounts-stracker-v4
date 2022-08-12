@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/splinterlands-multiple-accounts-stracker-v4/static/css/main.97157d96.css",
-    "main.js": "/splinterlands-multiple-accounts-stracker-v4/static/js/main.e5eb3e12.js",
+    "main.css": "/splinterlands-multiple-accounts-stracker-v4/static/css/main.b8318ab0.css",
+    "main.js": "/splinterlands-multiple-accounts-stracker-v4/static/js/main.efa0682e.js",
     "index.html": "/splinterlands-multiple-accounts-stracker-v4/index.html",
-    "main.97157d96.css.map": "/splinterlands-multiple-accounts-stracker-v4/static/css/main.97157d96.css.map",
-    "main.e5eb3e12.js.map": "/splinterlands-multiple-accounts-stracker-v4/static/js/main.e5eb3e12.js.map"
+    "main.b8318ab0.css.map": "/splinterlands-multiple-accounts-stracker-v4/static/css/main.b8318ab0.css.map",
+    "main.efa0682e.js.map": "/splinterlands-multiple-accounts-stracker-v4/static/js/main.efa0682e.js.map"
   },
   "entrypoints": [
-    "static/css/main.97157d96.css",
-    "static/js/main.e5eb3e12.js"
+    "static/css/main.b8318ab0.css",
+    "static/js/main.efa0682e.js"
   ]
 }
