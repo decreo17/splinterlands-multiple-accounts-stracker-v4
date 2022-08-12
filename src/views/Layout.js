@@ -33,6 +33,7 @@ const Layout = () => {
             </div>
             <Outlet/> {/**The update page/route is showing becuase of this */}
             <CardLookup/>
+            <br/>
             <Footer />
         </>
     )

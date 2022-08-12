@@ -20,7 +20,7 @@ const CardLookup = ()=> {
         dispatch(CardDetailstSlice.actions.setAccounts(cardsDetailsJson)) 
     },[])
 
-    const cardDetails = useSelector((state)=> state.cardDetails);
+    const cardDetails = useSelector((state)=> state.cardDetails.allCards);
     /*const refreshButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
         dispatch(CardDetailstSlice.actions.reset()) 
         dispatch(CardDetailstSlice.actions.setAccounts(cardsDetailsJson)) 

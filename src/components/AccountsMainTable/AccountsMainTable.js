@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import QuestTable from '../QuestTable/QuestTable'
 import { useDispatch, useSelector } from 'react-redux'
 import AccountSlice from '../../slices/account-slice'
+import LoadingSlice from '../../slices/loadingSlice'
 
 const AccountsMainTable = () => {
     const dispatch = useDispatch()
@@ -22,8 +23,19 @@ const AccountsMainTable = () => {
     }}>ADD</button>
 
     const clearAccountsButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
+        dispatch(LoadingSlice.actions.isLoading(true))
         window.localStorage.removeItem("accounts");
         dispatch(AccountSlice.actions.reset());
+        toast.success('Accounts Cleared', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored"
+            });
     }}>CLEAR</button>
 
     return (

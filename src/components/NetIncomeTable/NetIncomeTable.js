@@ -1,0 +1,53 @@
+import UpdateNetIncome from '../Accounts/UpdateNetIncome'
+import './NetIncomeTable.css'
+import $ from 'jquery';
+import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useSelector } from 'react-redux';
+
+const NetIncomeTable = ()=> {
+    const netincome = useSelector((state)=> state.decTransactions.netIncome);
+
+    return (
+        <>
+            <div id="netincome-card" className=" card netincome-table-div">
+                <div className="w3-container"  id="quest">
+                    <br/>
+                    <h5><b><i><FontAwesomeIcon icon={faUsers}/></i> Users:</b></h5>
+                    <div>
+                        <UpdateNetIncome/>
+                    </div>
+                    <div className="">
+                        <input className="w3-input w3-border w3-padding" type="text" 
+                            placeholder="Search.." id="collapsSearchNetIncome" />
+                        <table id="netincome-table" className="w3-hoverable display table table-dark table-striped">
+                            <thead>
+                                <tr id="tr-netincome" className="sticky-table-head w3-dark-grey">
+                                    <th >#</th>
+                                    <th >Username</th>
+                                    <th >Dec Earned</th>
+                                    <th >Rent</th>
+                                    <th >Net Income</th>
+                                </tr>
+                            </thead>
+                            <tbody id='netincome-table-body'>
+                                {netincome.map((a, i) => (
+                                    <tr key={i}>
+                                        <td>{i+1}</td>
+                                        <td>{a.username}</td>
+                                        <td>{a.earned.toFixed(3)}</td>
+                                        <td>{a.rent.toFixed(3)}</td>
+                                        <td>{a.netIncome.toFixed(3)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </>
+    )
+}
+
+export default NetIncomeTable;

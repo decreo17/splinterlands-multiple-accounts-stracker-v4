@@ -17,9 +17,10 @@ const App = () => {
   return (
       <Router>
           <Routes>
-              <Route  exact path='/' element={<Layout/>}>
+            {/**When updating routes path, don't forget to update the paths in sidebar as well */}
+              <Route  exact path='/splinterlands-multiple-accounts-stracker-v4/' element={<Layout/>}>
                 <Route index element={<Home />} />
-                <Route path="net-income" element={<NetIncome />} />
+                <Route exact path="/splinterlands-multiple-accounts-stracker-v4/net-income" element={<NetIncome />} />
               </Route>
           </Routes>
       </Router>

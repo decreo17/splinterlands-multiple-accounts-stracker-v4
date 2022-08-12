@@ -57,7 +57,7 @@ export const getAccountDetails = async(username) => {
 
     await getPlayerData(username)
     .then((data) => {
-            console.log(data)
+            //console.log(data)
             rank = league(data.league)
             rating = data.rating
             power = data.collection_power
@@ -326,7 +326,7 @@ export const getAccountDetails = async(username) => {
 
 
 const UpdateAccounts = ()=> {
-    const dispatch = useDispatch();
+    
 };
 
 export default UpdateAccounts

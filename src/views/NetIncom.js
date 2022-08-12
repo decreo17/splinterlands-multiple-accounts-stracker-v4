@@ -1,22 +1,20 @@
 
 import './NetIncome.css';
-import 'w3-css/w3.css';
-import Menu from '../components/Menu/Menu';
-import Footer from '../components/Footer/Footer';
-import Settings from '../components/Settings/Settings';
 import React from 'react'
-import { SideBar } from '../components/SideBar/SideBar';
-import SeasonBanner from '../components/SeasonBanner/SeasonBanner';
-import { ToastContainer } from 'react-toastify';
-import CardLookup from '../components/CardLookup/CardLookup';
+import NetIncomeTable from '../components/NetIncomeTable/NetIncomeTable';
+import NetIncomeDashboard from '../components/Dashboard/NetIncomeDashboard';
+import Header from '../components/Header/Header';
+
 
 const NetIncome = () => {
+    const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
+        document.getElementById('add-account-modal').style.display='block'
+    }}>ADD</button>
 
     return (
-      <>
-        <div className='text-center'>
-            Welcome to Net Income 
-        </div>
+      <>  
+          <Header dashboard={NetIncomeDashboard}/>
+          <NetIncomeTable/>
       </>
     );
   }

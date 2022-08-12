@@ -1,16 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = {allCards : [], playerCards : []};
 
 const CardDetailstSlice = createSlice({
     name            : 'cardDetails',
     initialState    : initialState,
     reducers        : {
         addAccount(state, action){
-            state.push(action.payload);
+            state.allCards.push(action.payload);
         },
         setAccounts(state, action){
-            return action.payload;
+            state.allCards = action.payload;
+        },
+        setPlayerCards(state, action){
+            state.playerCards = action.payload
         },
         reset: () => initialState
     }

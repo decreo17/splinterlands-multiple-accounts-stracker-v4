@@ -134,7 +134,6 @@ export const getQuestDetails = async(username, settings) => {
         
         /*Season*/
         var seasonData = data.season_reward_info
-        console.log(data)
         seasonRshares = seasonData.rshares
         seasonChestEarned = seasonData.chest_earned
         seasonChestTeir = seasonData.chest_tier

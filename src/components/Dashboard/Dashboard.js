@@ -146,7 +146,7 @@ const Dashboard = () => {
                                 <span id="decCurrency">{total_dec_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
                             </div>
                             <div className="w3-clear"></div>
-                    </div>
+                        </div>
                     </div>
                     {/* TOTAL SPS */}
                     <div className="w3-quarter w3-padding">

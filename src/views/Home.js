@@ -12,12 +12,14 @@ import AccountsMainTable from '../components/AccountsMainTable/AccountsMainTable
 import AddAccount from '../components/Accounts/AddAccount';
 import { ToastContainer } from 'react-toastify';
 import CardLookup from '../components/CardLookup/CardLookup';
+import Dashboard from '../components/Dashboard/Dashboard';
+
 
 const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header dashboard={Dashboard} />
       <AccountsMainTable />
       
     </>

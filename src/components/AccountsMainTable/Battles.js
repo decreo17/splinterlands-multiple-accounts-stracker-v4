@@ -69,9 +69,9 @@ const Battles = () => {
                                     <div className=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                                         {((a.winCount/50)*100).toFixed(2)}%
                                     </div>
-                                    <ul class="dropdown-menu">
-                                        <li><span class="dropdown-item">W: {a.winCount} D: {a.drawCount} L: {50 - a.winCount - a.drawCount}</span></li>
-                                        <li><span class="dropdown-item" style={{color:'#2196F3'}}>{a.decEarned.toFixed(2)} DEC Earned</span></li>
+                                    <ul className="dropdown-menu">
+                                        <li><span className="dropdown-item">W: {a.winCount} D: {a.drawCount} L: {50 - a.winCount - a.drawCount}</span></li>
+                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.decEarned.toFixed(2)} DEC Earned</span></li>
                                     </ul>
                                 </td>
                                     
@@ -83,9 +83,9 @@ const Battles = () => {
                                     <div type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                                         {((a.modern_winCount/50)*100).toFixed(2)}%
                                     </div>
-                                    <ul class="dropdown-menu">
-                                        <li><span class="dropdown-item">W: {a.modern_winCount} D: {a.modern_drawCount} L: {50 - a.modern_winCount - a.modern_drawCount}</span></li>
-                                        <li><span class="dropdown-item" style={{color:'#2196F3'}}>{a.modern_decEarned.toFixed(2)} DEC Earned</span></li>
+                                    <ul className="dropdown-menu">
+                                        <li><span className="dropdown-item">W: {a.modern_winCount} D: {a.modern_drawCount} L: {50 - a.modern_winCount - a.modern_drawCount}</span></li>
+                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.modern_decEarned.toFixed(2)} DEC Earned</span></li>
                                     </ul>
                                 </td>
                                 <td style={{whiteSpace: 'nowrap'}}>{a.modern_last_battle}</td>
@@ -95,6 +95,11 @@ const Battles = () => {
                                     //delete in localStorage
                                     deleteAccountFromLocalStorage(a.username)
                                 }}>DELETE</button></td>
+                                {/**create a new component that will take a username prop, then pass that a.username to that component
+                                 * The component should dispatch a change in the account-slice
+                                 * account-slice should be update to add another action which has the logic to update that particular account
+                                 * then add that component here and wrap it with <td>
+                                 */}
                             </tr>
                             ))}
                         </tbody>

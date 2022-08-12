@@ -7,18 +7,28 @@ import AccountSlice from '../slices/account-slice';
 import SettingsSlice from '../slices/settingsSlice';
 import QuestSlice from '../slices/quest-slice';
 import CardDetailstSlice from '../slices/cardDetailsSlice';
+import DecTransactionsSlice from '../slices/decTransactionsSlice';
+
+
 
 const store = configureStore({
     reducer : {
-        season      : SeasonSlice.reducer,
-        rewardPools : RewardPoolSlice.reducer,
-        loading     : LoadingSlice.reducer,
-        dashboard   : DashboardSlice.reducer,
-        accounts    : AccountSlice.reducer,
-        settings    : SettingsSlice.reducer,
-        quest       : QuestSlice.reducer,
-        cardDetails : CardDetailstSlice.reducer
-    }
+        season          : SeasonSlice.reducer,
+        rewardPools     : RewardPoolSlice.reducer,
+        loading         : LoadingSlice.reducer,
+        dashboard       : DashboardSlice.reducer,
+        accounts        : AccountSlice.reducer,
+        settings        : SettingsSlice.reducer,
+        quest           : QuestSlice.reducer,
+        cardDetails     : CardDetailstSlice.reducer,
+        decTransactions : DecTransactionsSlice.reducer,
+        
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, 
+    }),
+    
 });
 
 export default store;
