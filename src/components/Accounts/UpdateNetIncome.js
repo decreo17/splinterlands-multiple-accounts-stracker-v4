@@ -1,8 +1,7 @@
 import { getCards, getDecTransactions } from '../../api/playerApi';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import LoadingSlice from '../../slices/loadingSlice';
-
 
 //for toast
 import { toast } from 'react-toastify';
@@ -20,7 +19,7 @@ export const getNetIncomeDetails = async(username,days = 1) => {
     var rent = 0
     var earned = 0
     var netIncome = 0
-    var transactions = []
+    //var transactions = []
     
     await getCards(username)
     .then((data) => {
@@ -50,7 +49,7 @@ export const getNetIncomeDetails = async(username,days = 1) => {
         let decTransactions = data.filter(transaction => transaction.type === "dec_reward" || transaction.type === "quest_rewards")
         //let decTransactions = data.filter(transaction => transaction.type === "dec_reward")
             .filter(transaction => Date.parse(transaction.created_date) > duration)
-        transactions = decTransactions
+        //transactions = decTransactions
         decTransactions.map(x => earned += parseFloat(x.amount));
         netIncome = earned - rent
     })
@@ -141,7 +140,6 @@ const UpdateNetIncome = () => {
         }
     }
     
-
   return (
     <button id='load-net-income' className="btn-sm btn-success m-1" onClick={()=> {
         loadAccountsFromLocalStorage()

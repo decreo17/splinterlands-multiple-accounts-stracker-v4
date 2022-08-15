@@ -78,7 +78,7 @@ const Dashboard = () => {
             <div className="w3-row-padding w3-margin-bottom">
                 {/* ACCOUNTS */}
                 <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round w3-red w3-padding-16">
+                    <div className="w3-container w3-round bg-gradient w3-red w3-padding-16">
                         <p className='card-header w3-center'>TOTAL ACCOUNTS</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                         <div className="w3-right accounts">
@@ -90,7 +90,7 @@ const Dashboard = () => {
                     </div>
                     {/* DEC PRICE */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-purple w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
                             <p className='card-header w3-center'>DEC Price</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
@@ -102,7 +102,7 @@ const Dashboard = () => {
                     </div>
                     {/* SPS PRICE */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-green w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
                             <p className='card-header w3-center'>SPS Price</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right accounts">
@@ -114,7 +114,7 @@ const Dashboard = () => {
                     </div>
                     {/* CHAOS */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-red w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-red w3-padding-16">
                             <p className='card-header w3-center'>TOTAL CHAOS</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                             <div className="w3-right accounts">
@@ -126,7 +126,7 @@ const Dashboard = () => {
                     </div>
                     {/* TOTAL CREDITS */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-orange w3-text-white w3-padding-16">
+                        <div className= "bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                             <p className='card-header w3-center'> TOTAL CREDITS</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">
@@ -138,7 +138,7 @@ const Dashboard = () => {
                     </div>  
                     {/* TOTAL DEC */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-purple w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
                             <p className='card-header w3-center'>TOTAL DEC</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
@@ -150,7 +150,7 @@ const Dashboard = () => {
                     </div>
                     {/* TOTAL SPS */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-green w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
                             <p className='card-header w3-center'>TOTAL SPS</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                             <div className="w3-right">
@@ -162,7 +162,7 @@ const Dashboard = () => {
                     </div>
                     {/* TOTAL STAKES SPS */}
                     <div className="w3-quarter w3-padding">
-                        <div className="w3-container w3-round w3-orange w3-text-white w3-padding-16">
+                        <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                             <p className='card-header w3-center'>TOTAL STAKED</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                             <div className="w3-right">

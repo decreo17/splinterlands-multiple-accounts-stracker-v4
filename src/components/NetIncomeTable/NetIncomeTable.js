@@ -4,9 +4,28 @@ import $ from 'jquery';
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+
 
 const NetIncomeTable = ()=> {
     const netincome = useSelector((state)=> state.decTransactions.netIncome);
+    const localTheme = window.localStorage.getItem('theme');
+
+    $("#collapsSearchNetIncome").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#netincome-table tr").filter(function() {
+          return $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          
+        });
+    });
+
+    useEffect(() => {
+        if(localTheme === 'light') {
+        console.log(localTheme)
+        $("#netincome-table").removeClass("table-dark ");
+        }
+    })
 
     return (
         <>
@@ -45,7 +64,6 @@ const NetIncomeTable = ()=> {
                     </div>
                 </div>
             </div>
-            
         </>
     )
 }

@@ -62,7 +62,7 @@ const NetIncomeDashboard = () => {
             <div className="w3-row-padding w3-margin-bottom">
                 {/* ACCOUNTS */}
                 <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round w3-red w3-padding-16">
+                    <div className="bg-gradient w3-container w3-round w3-red w3-padding-16">
                         <p className='card-header w3-center'>TOTAL ACCOUNTS</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                         <div className="w3-right accounts">
@@ -75,7 +75,7 @@ const NetIncomeDashboard = () => {
 
                 {/* DEC EARNED */}
                 <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round w3-purple w3-padding-16">
+                    <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
                         <p className='card-header w3-center'>TOTAL EARNED</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                         <div className="w3-right">
@@ -87,7 +87,7 @@ const NetIncomeDashboard = () => {
                 </div>
                 {/* DEC RENT */}
                 <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round w3-green w3-padding-16">
+                    <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
                         <p className='card-header w3-center'>TOTAL RENT</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                         <div className="w3-right">
@@ -99,7 +99,7 @@ const NetIncomeDashboard = () => {
                 </div>
                 {/* DEC NETINCOME */}
                 <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round w3-orange w3-text-white w3-padding-16">
+                    <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                         <p className='card-header w3-center'>NET INCOME</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                         <div className="w3-right">

@@ -21,6 +21,16 @@ export const GlobalStyles = createGlobalStyle`
     font-size: x-small;
   }
 
+  nav > div button.nav-item.nav-link,
+  nav > div button.nav-item.nav-link.active{
+    color: ${({ theme }) => theme.text};
+    boarder: ${({ theme }) => theme.text};
+  }
+
+  nav > div button.nav-item.nav-link:hover,
+  nav > div button.nav-item.nav-link:focus{
+    color: ${({ theme }) => theme.text};
+  }
 
   :root {
     --toastify-toast-background: ${({ theme }) => theme.body};

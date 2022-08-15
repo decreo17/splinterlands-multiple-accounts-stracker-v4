@@ -30,9 +30,8 @@ const Balances = () => {
 
     return (
         <div id="mainModern" className="w3-responsive card">
-            <br/>
-            <h5><b><i><FontAwesomeIcon icon={faUsers}/></i> Users:</b></h5>
             <div className="card-body">
+                <h5><b><i><FontAwesomeIcon icon={faUsers}/></i> Users:</b></h5>
                 <input tabIndex="6" className="w3-input w3-border w3-padding" type="text" placeholder="Search for username.." id="search-balances" />
                 <table id="jsonTableModern" className="w3-hoverable display table table-dark table-striped">
                     <thead>

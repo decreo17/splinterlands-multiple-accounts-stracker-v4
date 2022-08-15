@@ -20,6 +20,7 @@ function Themes() {
       $("#questTable").removeClass("table-dark ");
       $("#seasonTable").removeClass("table-dark ");
       $("#card-lookup-table").removeClass("table-dark ");
+      $("#netincome-table").removeClass("table-dark ");
     
     } else {
       $("#jsonTableModern").addClass("table-dark ");
@@ -27,6 +28,7 @@ function Themes() {
       $("#questTable").addClass("table-dark ");
       $("#seasonTable").addClass("table-dark ");
       $("#card-lookup-table").addClass("table-dark ");
+      $("#netincome-table").addClass("table-dark ");
   
     }
   
