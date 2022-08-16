@@ -5,11 +5,13 @@ import LoadingSlice from '../../slices/loadingSlice';
 import { getQuestDetails } from './UpdateQuests';
 import QuestSlice from '../../slices/quest-slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Loading from '../Loading/Loading';
 
 const LoadQuest = () => {
     const dispatch = useDispatch()
     const settings = useSelector((state) => state.settings.splinterlands_settings)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         dispatch(LoadingSlice.actions.isLoading(true))
@@ -35,6 +37,7 @@ const LoadQuest = () => {
             usernames.push(localStorage.getItem("accounts"));
             usernames = usernames.toString().split(",");
             (async () => {
+                setLoading(true)
                 for (let user of usernames) {
                     try {
                         await getQuestDetails(user, settings)
@@ -66,15 +69,19 @@ const LoadQuest = () => {
                 progress: undefined,
                 theme: "colored"
                 });
+            setLoading(false)
             })();
         }
         
     }
 
     return (
-        <button id='load-quest' className="btn-sm btn-success m-1" onClick={()=> {
-            loadQuestFromAccountsInLocalStorage()
-        }}>LOAD/REFRESH QUEST</button>                    
+        <>
+            <button id='load-quest' className="btn-sm btn-success m-1" onClick={()=> {
+                loadQuestFromAccountsInLocalStorage()
+            }}>LOAD/REFRESH QUEST</button>
+            {loading && <Loading/>}
+        </>                   
     )
 
 }

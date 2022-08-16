@@ -153,6 +153,7 @@ export const getPlayerBattleHistoryModern = async (player) => {
   }
 }
 
+//old
 export const getCurrentQuest = async (player) => {
   let res 
   try {
@@ -186,6 +187,7 @@ export const getCurrentQuest = async (player) => {
   }
 }
 
+//new
 export const getCurrentRewards = async (player) => {
   let res 
   try {

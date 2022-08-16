@@ -1,12 +1,13 @@
 import { getCards, getDecTransactions } from '../../api/playerApi';
 import { useDispatch } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingSlice from '../../slices/loadingSlice';
 
 //for toast
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DecTransactionsSlice from '../../slices/decTransactionsSlice';
+import Loading from '../Loading/Loading';
 
 export const daysAgo = (numOfDdays) => {
     var days = 86400000 * numOfDdays;
@@ -79,11 +80,10 @@ export const getNetIncomeDetails = async(username,days = 1) => {
 
 const UpdateNetIncome = () => {
     const dispatch = useDispatch()
+    const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        dispatch(LoadingSlice.actions.isLoading(true))
-    })
-    const loadAccountsFromLocalStorage = async () => {
+    const loadAccountsFromLocalStorage = () => {
+        
         dispatch(DecTransactionsSlice.actions.reset())
         let usernames = [];
         let local = localStorage.getItem("accounts");
@@ -103,11 +103,13 @@ const UpdateNetIncome = () => {
             usernames.push(localStorage.getItem("accounts"));
             usernames = usernames.toString().split(",");
             (async () => {
+                setLoading(true)
                 for (let user of usernames) {
+                    
                     try {
                         await getNetIncomeDetails(user)
                         .then(data => {
-                            dispatch(LoadingSlice.actions.isLoading(true))
+                            //dispatch(LoadingSlice.actions.isLoading(true))
                             //accounts.push(data)
                             dispatch(DecTransactionsSlice.actions.addNetIncome(data))
                         })
@@ -136,14 +138,19 @@ const UpdateNetIncome = () => {
                 progress: undefined,
                 theme: "colored"
                 });
+                setLoading(false)
             })();
-        }
+        } 
     }
     
   return (
-    <button id='load-net-income' className="btn-sm btn-success m-1" onClick={()=> {
-        loadAccountsFromLocalStorage()
-  }}>LOAD/REFRESH NETINCOME</button>     
+    <>
+        <button id='load-net-income' className="btn-sm btn-success m-1" onClick={()=> {
+            loadAccountsFromLocalStorage()
+        }}>LOAD/REFRESH NETINCOME</button>
+        {loading && <Loading/>}
+    </>
+
   )
 
 }

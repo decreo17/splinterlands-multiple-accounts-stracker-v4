@@ -1,9 +1,10 @@
 
 import './NetIncome.css';
-import React from 'react'
+import React, { useState } from 'react'
 import NetIncomeTable from '../components/NetIncomeTable/NetIncomeTable';
 import NetIncomeDashboard from '../components/Dashboard/NetIncomeDashboard';
 import Header from '../components/Header/Header';
+import { useDispatch, useSelector } from "react-redux";
 
 
 const NetIncome = () => {
@@ -13,6 +14,7 @@ const NetIncome = () => {
 
     return (
       <>  
+          
           <Header dashboard={NetIncomeDashboard}/>
           <NetIncomeTable/>
       </>

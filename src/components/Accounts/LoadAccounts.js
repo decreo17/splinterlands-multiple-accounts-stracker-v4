@@ -5,14 +5,12 @@ import { getAccountDetails } from './UpdateAccounts';
 import AccountSlice from '../../slices/account-slice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Loading from '../Loading/Loading';
 
 const LoadAccounts = () => {
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(LoadingSlice.actions.isLoading(true))
-    })
+    const [loading, setLoading] = useState(false)
     
     const loadAccountsFromLocalStorage = async () => {
         dispatch(AccountSlice.actions.reset())
@@ -33,11 +31,11 @@ const LoadAccounts = () => {
             usernames.push(localStorage.getItem("accounts"));
             usernames = usernames.toString().split(",");
             (async () => {
+                setLoading(true)
                 for (let user of usernames) {
                     try {
                         await getAccountDetails(user)
                         .then(data => {
-                            dispatch(LoadingSlice.actions.isLoading(true))
                             dispatch(AccountSlice.actions.addAccount(data))
                         })
                 } catch (e) {
@@ -64,15 +62,18 @@ const LoadAccounts = () => {
                 progress: undefined,
                 theme: "colored"
                 });
+            setLoading(false)
             })();
-        }
-        
+        } 
     }
 
     return (
-        <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
-            loadAccountsFromLocalStorage()
-        }}>LOAD/REFRESH ACCOUNTS</button>                    
+        <>
+            <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
+                loadAccountsFromLocalStorage()
+            }}>LOAD/REFRESH ACCOUNTS</button>
+            {loading && <Loading/>}    
+        </>          
     )
 }
 
