@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate 
 } from 'react-router-dom';
 import Layout from './views/Layout';
 
@@ -21,6 +22,8 @@ const App = () => {
               <Route  exact path='/splinterlands-multiple-accounts-stracker-v4/' element={<Layout/>}>
                 <Route index element={<Home />} />
                 <Route exact path="/splinterlands-multiple-accounts-stracker-v4/net-income" element={<NetIncome />} />
+                <Route exact path="/splinterlands-multiple-accounts-stracker-v4/pagenotfound" element={<p>Page not found</p>}>Page not found.</Route>
+                <Route path="*" element={<Navigate replace to="/splinterlands-multiple-accounts-stracker-v4/pagenotfound"/>}></Route>
               </Route>
           </Routes>
       </Router>
