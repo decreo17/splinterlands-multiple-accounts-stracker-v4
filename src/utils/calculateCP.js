@@ -58,7 +58,13 @@ const calculateCP = (settings, card, details, base_only) => {
     
     if(details.tier >=7 )total_dec=total_dec / 2;
     
-    return total_dec
+    return { 
+        cp                  : total_dec,
+        bcx                 : bcx,
+        card_detail_id      : card.card_detail_id,
+        gold                : card.gold,
+        edition             : card.edition,
+    }
 }
 
 

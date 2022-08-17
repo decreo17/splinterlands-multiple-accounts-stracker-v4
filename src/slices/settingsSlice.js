@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 /**
  * not yet in use
  */
-const initialState = {theme: '', splinterlands_settings: []};
+const initialState = {theme: '', splinterlands_settings: [], lastMarketPriceUpdate : ''};
 
 const SettingsSlice = createSlice({
     name            : 'settings',
@@ -13,6 +13,9 @@ const SettingsSlice = createSlice({
         },
         setSplinterlandsSettings(state, action){
             state.splinterlands_settings = action.payload
+        },
+        setLastMarketPriceUpdate(state, action){
+            state.lastMarketPriceUpdate = action.payload
         }
     } 
 });

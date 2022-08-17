@@ -56,7 +56,40 @@ const getCardsDetailsFromApi = async  () => {
         return res;
     } catch (error) {
       console.log(error);
-    }    
+  }    
+}
+
+export const getCardsMarketForSaleGrouped = async  () => {
+  let res;
+  try {
+      res = await fetch(`${api}/market/for_sale_grouped`)
+      .then(async (res) => {
+          if(res.ok){
+            console.log("Splinterlands API called getCardsMarketForSaleGrouped " + res.status)
+            return res.json()
+          } else {
+            if(res.status === 429 || res.status === 502) {
+              const millisToSleep = getMillisToSleep(retryMins)
+              
+              toast.warning('API rate limit reach, will try again after ' + retryMins + ' minutes', {
+                position: "top-center",
+                autoClose: millisToSleep,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored"
+                });
+                await sleep(millisToSleep)
+              return getCardsMarketForSaleGrouped()
+            }
+          }
+        })
+      return res;
+  } catch (error) {
+    console.log(error);
+}    
 }
 
 export default getCardsDetailsFromApi

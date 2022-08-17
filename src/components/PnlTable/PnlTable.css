@@ -1,0 +1,13 @@
+.pnl-table-div {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px;  
+    overflow-y: scroll; 
+    margin: 0 auto; 
+    border: 1px solid green
+}
+
+.sticky-table-head {
+    position: sticky;
+    top: 0;
+  }
