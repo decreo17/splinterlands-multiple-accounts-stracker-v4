@@ -21,6 +21,7 @@ function Themes() {
       $("#seasonTable").removeClass("table-dark ");
       $("#card-lookup-table").removeClass("table-dark ");
       $("#netincome-table").removeClass("table-dark ");
+      $("#spsRankRewardsTable").removeClass("table-dark ");
     
     } else {
       $("#jsonTableModern").addClass("table-dark ");
@@ -29,6 +30,7 @@ function Themes() {
       $("#seasonTable").addClass("table-dark ");
       $("#card-lookup-table").addClass("table-dark ");
       $("#netincome-table").addClass("table-dark ");
+      $("#spsRankRewardsTable").addClass("table-dark ");
   
     }
   

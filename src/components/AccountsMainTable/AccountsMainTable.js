@@ -13,10 +13,12 @@ import QuestTable from '../QuestTable/QuestTable'
 import { useDispatch, useSelector } from 'react-redux'
 import AccountSlice from '../../slices/account-slice'
 import LoadingSlice from '../../slices/loadingSlice'
+import SpsRankRewards from '../SpsRankRewards/SpsRankRewards'
 
 const AccountsMainTable = () => {
     const dispatch = useDispatch()
     const quest = useSelector((state)=> state.quest);
+    const sps = useSelector((state)=> state.unclaimedSps);
 
     const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
         document.getElementById('add-account-modal').style.display='block'
@@ -71,6 +73,17 @@ const AccountsMainTable = () => {
                             
                         }}> Quest
                     </button>
+                    <button className="bg-gradient nav-item nav-link" id="component-sps-tab" data-bs-toggle="tab" 
+                        data-bs-target="#component-sps" type="button" role="tab" 
+                        aria-controls="component-sps" aria-selected="false"
+                        onClick={() => {
+
+                            if(!sps.length > 0) {
+                                document.getElementById('load-unclaimed-sps').click()
+                            }
+                        }}>
+                            SPS Rank Rewards
+                    </button>
                 </div>
             </nav>
 
@@ -83,6 +96,9 @@ const AccountsMainTable = () => {
                 </div>
                 <div id="component-quest" className="tab-pane fade">
                     <QuestTable/>
+                </div>
+                <div id="component-sps" className="tab-pane fade">
+                    <SpsRankRewards/>
                 </div>
             </div>
         </>

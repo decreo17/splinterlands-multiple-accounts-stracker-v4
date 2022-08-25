@@ -8,7 +8,7 @@ import CoinGecoPriceApi from '../../api/CoinGecoPrice'
 const NetIncomeDashboard = () => {
     const dispatch = useDispatch()
     const accounts = useSelector((state)=> state.accounts);
-    const netincome = useSelector((state)=> state.decTransactions.netIncome);
+    const netincome = useSelector((state)=> state.transactions.netIncome);
     const localCurrency = window.localStorage.getItem("currency");
     const totalAccounts = useSelector(state => state.dashboard.totalAccounts)
     const decPrice = useSelector(state => state.dashboard.decPrice)

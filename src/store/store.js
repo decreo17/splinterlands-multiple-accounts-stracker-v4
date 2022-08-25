@@ -7,7 +7,8 @@ import AccountSlice from '../slices/account-slice';
 import SettingsSlice from '../slices/settingsSlice';
 import QuestSlice from '../slices/quest-slice';
 import CardDetailstSlice from '../slices/cardDetailsSlice';
-import DecTransactionsSlice from '../slices/decTransactionsSlice';
+import TransactionsSlice from '../slices/transactionsSlice';
+import UnclaimedSpsSlice from '../slices/unclaimedSpsSlice';
 
 
 
@@ -21,8 +22,8 @@ const store = configureStore({
         settings        : SettingsSlice.reducer,
         quest           : QuestSlice.reducer,
         cardDetails     : CardDetailstSlice.reducer,
-        decTransactions : DecTransactionsSlice.reducer,
-        
+        transactions    : TransactionsSlice.reducer,
+        unclaimedSps    : UnclaimedSpsSlice.reducer
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

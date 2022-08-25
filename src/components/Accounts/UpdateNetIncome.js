@@ -6,7 +6,7 @@ import LoadingSlice from '../../slices/loadingSlice';
 //for toast
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DecTransactionsSlice from '../../slices/decTransactionsSlice';
+import TransactionsSlice from '../../slices/transactionsSlice';
 import Loading from '../Loading/Loading';
 
 export const daysAgo = (numOfDdays) => {
@@ -84,7 +84,7 @@ const UpdateNetIncome = () => {
 
     const loadAccountsFromLocalStorage = () => {
         
-        dispatch(DecTransactionsSlice.actions.reset())
+        dispatch(TransactionsSlice.actions.reset())
         let usernames = [];
         let local = localStorage.getItem("accounts");
         //let accounts = []
@@ -111,7 +111,7 @@ const UpdateNetIncome = () => {
                         .then(data => {
                             //dispatch(LoadingSlice.actions.isLoading(true))
                             //accounts.push(data)
-                            dispatch(DecTransactionsSlice.actions.addNetIncome(data))
+                            dispatch(TransactionsSlice.actions.addNetIncome(data))
                         })
                     } catch (e) {
                         console.log("There was an error while processing " + user + "\n" + e)

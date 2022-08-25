@@ -7,11 +7,12 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import UpdateMarketPrice from '../UpdateMarketPrice/UpdateMarketPrice';
 import PnlTable from '../PnlTable/PnlTable';
+import 'bootstrap'
 
 
 
 const NetIncomeTable = ()=> {
-    const netincome = useSelector((state)=> state.decTransactions.netIncome);
+    const netincome = useSelector((state)=> state.transactions.netIncome);
     const localTheme = window.localStorage.getItem('theme');
 
     $("#collapsSearchNetIncome").on("keyup", function() {
@@ -36,7 +37,7 @@ const NetIncomeTable = ()=> {
                     <br/>
                     <h5><b><i><FontAwesomeIcon icon={faUsers}/></i> Users:</b></h5>
                     <div>
-                        <UpdateNetIncome/> <UpdateMarketPrice/>
+                        <UpdateNetIncome/> 
                     </div>
                     <div className="">
                         <input className="w3-input w3-border w3-padding" type="text" 
@@ -65,10 +66,6 @@ const NetIncomeTable = ()=> {
                         </table>
                     </div>
                 </div>
-            </div>
-
-            <div>
-                <PnlTable/>
             </div>
         </>
     )

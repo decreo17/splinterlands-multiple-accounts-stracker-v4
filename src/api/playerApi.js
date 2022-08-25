@@ -256,6 +256,74 @@ export const getDecTransactions = async (player, offset = 0) => {
   }
 }
 
+export const getUnclaimedBalanceHistory = async (player, offset = 0) => {
+  let res 
+  try {
+      res = await fetch(`${api}/players/unclaimed_balance_history?token_type=SPS&offset=${offset}&limit=10000&username=${player}`)
+      .then(async (res) => {
+        if(res.ok){
+          console.log("Splinterlands API called getUnclaimedBalanceHistory" + res.status)
+          return res.json()
+        } else {
+          if(res.status === 429 || res.status === 502) {
+            const millisToSleep = getMillisToSleep(retryMins)
+            
+            toast.warning('API rate limit reach, will try again after ' + retryMins + ' minutes', {
+              position: "top-center",
+              autoClose: millisToSleep,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored"
+              });
+              await sleep(millisToSleep)
+            return getUnclaimedBalanceHistory(player)
+          }
+        }
+      })
+      
+      return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getUnclaimedBalance = async (player) => {
+  let res 
+  try {
+      res = await fetch(`${api}/players/unclaimed_balances?token_type=SPS&username=${player}`)
+      .then(async (res) => {
+        if(res.ok){
+          console.log("Splinterlands API called getUnclaimedBalance" + res.status)
+          return res.json()
+        } else {
+          if(res.status === 429 || res.status === 502) {
+            const millisToSleep = getMillisToSleep(retryMins)
+            
+            toast.warning('API rate limit reach, will try again after ' + retryMins + ' minutes', {
+              position: "top-center",
+              autoClose: millisToSleep,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored"
+              });
+              await sleep(millisToSleep)
+            return getUnclaimedBalance(player)
+          }
+        }
+      })
+      
+      return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const getCards = async (player) => {
   let res 
   try {

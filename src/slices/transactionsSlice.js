@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 
-const initialState = {alltransactions : [], netIncome: []};
+const initialState = {alltransactions : [], netIncome: [], spsUnclaimedHistory: []};
 
-const DecTransactionsSlice = createSlice({
+const TransactionsSlice = createSlice({
     name            : 'decTransactions',
     initialState    : initialState,
     reducers        : {
@@ -23,8 +23,11 @@ const DecTransactionsSlice = createSlice({
         addNetIncome(state, action){
             state.netIncome.push(action.payload);
         },
+        setSpsUnclaimedHistory(state, action) {
+            state.spsUnclaimedHistory = action.payload
+        },
         reset: () => initialState
     }
 });
 
-export default DecTransactionsSlice;
+export default TransactionsSlice;
