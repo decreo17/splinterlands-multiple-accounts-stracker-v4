@@ -5,13 +5,32 @@ import { deleteAccountFromLocalStorage } from '../../utils/deleteAccountFromLoca
 import $ from 'jquery';
 import { useEffect } from 'react';
 import 'bootstrap'
-import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Balances = () => {
     const localTheme = window.localStorage.getItem('theme');
     const dispatch = useDispatch()
     const accounts = useSelector((state)=> state.accounts);
+    const sps = useSelector((state)=> state.unclaimedSps);
+
+    const totalUnclaimedSps = (username) => {
+
+        try {
+            if(sps.length > 0) {
+                let filtered = sps.filter(a => a.username === username)
+                console.log(filtered)
+                return filtered[0].total
+    
+            } else {
+                return null
+            } 
+
+        } catch {
+            return null
+        }        
+    }
+
     
     //fitler is not yet working, need to find better sort and filter
     $("#search-balances").on("keyup", function() {
@@ -49,6 +68,7 @@ const Balances = () => {
                             <th>Legendary Potion</th>
                             <th>CL Packs</th>
                             <th>Merits</th>
+                            <th>Unclaimed Sps <i title='Click on SPS Rank Rewards to load unclaimed SPS'><FontAwesomeIcon icon={faInfoCircle}/></i></th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -68,6 +88,7 @@ const Balances = () => {
                                 <td>{a.legend_potion}</td>
                                 <td>{a.chaos}</td>
                                 <td>{a.merits}</td>
+                                <td>{totalUnclaimedSps(a.username)}</td>
                                 <td><button className="btn-sm btn-danger" onClick={() => {
                                     //delete from reducer
                                     dispatch(AccountSlice.actions.deleteAccount(a.username));

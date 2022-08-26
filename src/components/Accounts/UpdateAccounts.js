@@ -44,12 +44,12 @@ export const getAccountDetails = async(username) => {
     //player battle history
     let winCount = 0,
     drawCount = 0,
-    decEarned = 0,
+    spsEarned = 0,
     team = "", 
     wl= "", 
     modern_winCount = 0,
     modern_drawCount = 0,
-    modern_decEarned = 0,
+    modern_spsEarned = 0,
     modern_team = "", 
     modern_wl= "",
     player = username;
@@ -121,12 +121,12 @@ export const getAccountDetails = async(username) => {
         //console.log(data)
         try {
             if(data.battles[0].winner === player){ wl = "WIN " + 
-            parseFloat(JSON.parse(data.battles[0].reward_dec).toFixed(2)) + " DEC" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { wl = "LOSE" } }
+            parseFloat(JSON.parse(data.battles[0].reward_sps).toFixed(2)) + " SPS" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { wl = "LOSE" } }
             if(data.battles[0].winner === "DRAW"){ wl = "DRAW" }
         } catch (e) {
             setTimeout(function() {
                 if(data.battles[0].winner === player){ wl = "WIN " + 
-                parseFloat(JSON.parse(data.battles[0].reward_dec).toFixed(2)) + " DEC" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { wl = "LOSE" } }
+                parseFloat(JSON.parse(data.battles[0].reward_sps).toFixed(2)) + " SPS" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { wl = "LOSE" } }
                 if(data.battles[0].winner === "DRAW"){ wl = "DRAW" }
             }, 1000)
         }
@@ -172,19 +172,19 @@ export const getAccountDetails = async(username) => {
             }
 
             try {
-                if(data.battles[i].winner === player){ decEarned += parseFloat(JSON.parse(data.battles[i].reward_dec).toFixed(2))}
+                if(data.battles[i].winner === player){ spsEarned += parseFloat(JSON.parse(data.battles[i].reward_sps).toFixed(2))}
             } catch (e) {
                 console.log(e)     
             }
             last_battle = moment(data.battles[0].created_date).fromNow();
         }
 
-        //win_rate = <WinRate winCount={winCount} drawCount={drawCount} decEarned={decEarned}/>
-        win_rate =`W: ${winCount} D: ${drawCount} L: ${50 - winCount - drawCount} <br/> WinRate ${((winCount/50)*100).toFixed(2)}% <br><span style='color:#2196F3' ${decEarned.toFixed(2)} \nDEC Earned</span>`
+        //win_rate = <WinRate winCount={winCount} drawCount={drawCount} spsEarned={spsEarned}/>
+        win_rate =`W: ${winCount} D: ${drawCount} L: ${50 - winCount - drawCount} <br/> WinRate ${((winCount/50)*100).toFixed(2)}% <br><span style='color:#2196F3' ${spsEarned.toFixed(2)} \nSPS Earned</span>`
         /*
         win_rate = "W: " + winCount + " D: " + drawCount + " L: " + (50 - winCount - drawCount) + <br/> + "WinRate: " + 
             ((winCount/50)*100).toFixed(2) + "% " + "<br/><span style={{color:'#2196F3'}}/>" + 
-            decEarned.toFixed(2) + " \nDEC Earned</span>"*/
+            spsEarned.toFixed(2) + " \nSPS Earned</span>"*/
 
         last_team = team
     })
@@ -210,12 +210,12 @@ export const getAccountDetails = async(username) => {
         //console.log(data)
         try {
             if(data.battles[0].winner === player){ modern_wl = "WIN " + 
-            parseFloat(JSON.parse(data.battles[0].reward_dec).toFixed(2)) + " DEC" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { modern_wl = "LOSE" } }
+            parseFloat(JSON.parse(data.battles[0].reward_sps).toFixed(2)) + " SPS" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { modern_wl = "LOSE" } }
             if(data.battles[0].winner === "DRAW"){ modern_wl = "DRAW" }
         } catch (e) {
             setTimeout(function() {
                 if(data.battles[0].winner === player){ modern_wl = "WIN " + 
-                parseFloat(JSON.parse(data.battles[0].reward_dec).toFixed(2)) + " DEC" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { modern_wl = "LOSE" } }
+                parseFloat(JSON.parse(data.battles[0].reward_sps).toFixed(2)) + " SPS" } else { if(data.battles[0].winner !== player || data.battles[0].winner !== "DRAW") { modern_wl = "LOSE" } }
                 if(data.battles[0].winner === "DRAW"){ modern_wl = "DRAW" }
             }, 1000)
         }
@@ -261,18 +261,18 @@ export const getAccountDetails = async(username) => {
             }
 
             try {
-                if(data.battles[i].winner === player){ modern_decEarned += parseFloat(JSON.parse(data.battles[i].reward_dec).toFixed(2))}
+                if(data.battles[i].winner === player){ modern_spsEarned += parseFloat(JSON.parse(data.battles[i].reward_sps).toFixed(2))}
             } catch (e) {
                 console.log(e)     
             }
             modern_last_battle = moment(data.battles[0].created_date).fromNow();
         }
 
-        modern_win_rate =`W: ${modern_winCount} D: ${modern_drawCount} L: ${50 - modern_winCount - modern_drawCount} <br> WinRate ${((modern_winCount/50)*100).toFixed(2)}% <br><span style='color:#2196F3' ${modern_decEarned.toFixed(2)} \nDEC Earned</span>`
+        modern_win_rate =`W: ${modern_winCount} D: ${modern_drawCount} L: ${50 - modern_winCount - modern_drawCount} <br> WinRate ${((modern_winCount/50)*100).toFixed(2)}% <br><span style='color:#2196F3' ${modern_spsEarned.toFixed(2)} \nSPS Earned</span>`
         /*
         win_rate = "W: " + winCount + " D: " + drawCount + " L: " + (50 - winCount - drawCount) + <br/> + "WinRate: " + 
             ((winCount/50)*100).toFixed(2) + "% " + "<br/><span style={{color:'#2196F3'}}/>" + 
-            decEarned.toFixed(2) + " \nDEC Earned</span>"*/
+            spsEarned.toFixed(2) + " \nSPS Earned</span>"*/
 
         modern_last_team = modern_team
     })
@@ -310,12 +310,12 @@ export const getAccountDetails = async(username) => {
         last_team               : last_team, 
         win_rate                : win_rate, 
         last_battle             : last_battle,
-        decEarned               : decEarned,
+        spsEarned               : spsEarned,
         winCount                : winCount,
         drawCount               : drawCount,
         modern_winCount         : modern_winCount,
         modern_drawCount        : modern_drawCount,
-        modern_decEarned        : modern_decEarned,
+        modern_spsEarned        : modern_spsEarned,
         modern_rank             : modern_rank, 
         modern_rating           : modern_rating, 
         modern_last_team        : modern_last_team, 

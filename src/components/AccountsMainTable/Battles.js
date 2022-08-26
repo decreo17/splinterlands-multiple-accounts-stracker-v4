@@ -70,7 +70,7 @@ const Battles = () => {
                                     </div>
                                     <ul className="dropdown-menu">
                                         <li><span className="dropdown-item">W: {a.winCount} D: {a.drawCount} L: {50 - a.winCount - a.drawCount}</span></li>
-                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.decEarned.toFixed(2)} DEC Earned</span></li>
+                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.spsEarned.toFixed(2)} SPS Earned</span></li>
                                     </ul>
                                 </td>
                                     
@@ -84,7 +84,7 @@ const Battles = () => {
                                     </div>
                                     <ul className="dropdown-menu">
                                         <li><span className="dropdown-item">W: {a.modern_winCount} D: {a.modern_drawCount} L: {50 - a.modern_winCount - a.modern_drawCount}</span></li>
-                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.modern_decEarned.toFixed(2)} DEC Earned</span></li>
+                                        <li><span className="dropdown-item" style={{color:'#2196F3'}}>{a.modern_spsEarned.toFixed(2)} SPS Earned</span></li>
                                     </ul>
                                 </td>
                                 <td style={{whiteSpace: 'nowrap'}}>{a.modern_last_battle}</td>
