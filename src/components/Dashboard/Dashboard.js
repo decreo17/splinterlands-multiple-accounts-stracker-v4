@@ -17,8 +17,8 @@ const Dashboard = () => {
     const totalStake = useSelector(state => state.dashboard.totalStake)
     const one = 1
     const accounts = useSelector((state)=> state.accounts);
-    const localCurrency = window.localStorage.getItem("currency");
 
+    const localCurrency = window.localStorage.getItem("currency");
     //calculate total
     let total_accounts = 0;
     let total_chaos = 0;
@@ -70,111 +70,123 @@ const Dashboard = () => {
     total_ssps_price = spsPrice * totalStake
     total_credits_price = totalCredits / 1000
 
-    return (
-        <>
-            <h5><b><i><FontAwesomeIcon icon={faDashboard}/></i> My Dashboard</b></h5>
-            
-            <div id="one" style={{display: 'none'}}>{one}</div>
-            <div className="w3-row-padding w3-margin-bottom">
-                {/* ACCOUNTS */}
-                <div className="w3-quarter w3-padding">
-                    <div className="w3-container w3-round bg-gradient w3-red w3-padding-16">
-                        <p className='card-header w3-center'>TOTAL ACCOUNTS</p>
-                        <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
-                        <div className="w3-right accounts">
-                            <p id="total-accounts">{totalAccounts}</p>
-                            <br/>
-                        </div>
-                        <div className="w3-clear"></div>
-                    </div>
-                    </div>
-                    {/* DEC PRICE */}
+    try {
+
+        return (
+            <>
+                <h5><b><i><FontAwesomeIcon icon={faDashboard}/></i> My Dashboard</b></h5>
+                
+                <div id="one" style={{display: 'none'}}>{one}</div>
+                <div className="w3-row-padding w3-margin-bottom">
+                    {/* ACCOUNTS */}
                     <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
-                            <p className='card-header w3-center'>DEC Price</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
-                            <div className="w3-right accounts">
-                                <p id="decPrice">{decPrice.toFixed(5)} {localCurrency.toLocaleUpperCase()}</p>
-                                <br/>
-                            </div>
-                            <div className="w3-clear"></div>
-                        </div>
-                    </div>
-                    {/* SPS PRICE */}
-                    <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
-                            <p className='card-header w3-center'>SPS Price</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
-                            <div className="w3-right accounts">
-                                <p id="spsPrice">{spsPrice.toFixed(2)} {localCurrency.toLocaleUpperCase()}</p>
-                                <br/>
-                            </div>
-                            <div className="w3-clear"></div>
-                        </div>
-                    </div>
-                    {/* CHAOS */}
-                    <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-red w3-padding-16">
-                            <p className='card-header w3-center'>TOTAL CHAOS</p>
+                        <div className="w3-container w3-round bg-gradient w3-red w3-padding-16">
+                            <p className='card-header w3-center'>TOTAL ACCOUNTS</p>
                             <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                             <div className="w3-right accounts">
-                                <p id="total-chaos">{totalChaos}</p>
+                                <p id="total-accounts">{totalAccounts}</p>
                                 <br/>
                             </div>
                             <div className="w3-clear"></div>
                         </div>
-                    </div>
-                    {/* TOTAL CREDITS */}
-                    <div className="w3-quarter w3-padding">
-                        <div className= "bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
-                            <p className='card-header w3-center'> TOTAL CREDITS</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
-                            <div className="w3-right">
-                                <p id="credits">{totalCredits.toFixed(5)}</p>
-                                <span id="creditsCurrency">{total_credits_price.toFixed(2)} USD</span>
+                        </div>
+                        {/* DEC PRICE */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
+                                <p className='card-header w3-center'>DEC Price</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                                <div className="w3-right accounts">
+                                    <p id="decPrice">{decPrice.toFixed(5)} {localCurrency.toUpperCase()}</p>
+                                    <br/>
+                                </div>
+                                <div className="w3-clear"></div>
                             </div>
+                        </div>
+                        {/* SPS PRICE */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
+                                <p className='card-header w3-center'>SPS Price</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                                <div className="w3-right accounts">
+                                    <p id="spsPrice">{spsPrice.toFixed(2)} {localCurrency.toUpperCase()}</p>
+                                    <br/>
+                                </div>
+                                <div className="w3-clear"></div>
+                            </div>
+                        </div>
+                        {/* CHAOS */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-red w3-padding-16">
+                                <p className='card-header w3-center'>TOTAL CHAOS</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
+                                <div className="w3-right accounts">
+                                    <p id="total-chaos">{totalChaos}</p>
+                                    <br/>
+                                </div>
+                                <div className="w3-clear"></div>
+                            </div>
+                        </div>
+                        {/* TOTAL CREDITS */}
+                        <div className="w3-quarter w3-padding">
+                            <div className= "bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
+                                <p className='card-header w3-center'> TOTAL CREDITS</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
+                                <div className="w3-right">
+                                    <p id="credits">{totalCredits.toFixed(5)}</p>
+                                    <span id="creditsCurrency">{total_credits_price.toFixed(2)} USD</span>
+                                </div>
+                                <div className="w3-clear"></div>
+                            </div>
+                        </div>  
+                        {/* TOTAL DEC */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
+                                <p className='card-header w3-center'>TOTAL DEC</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                                <div className="w3-right">
+                                    <p id="dec">{totalDec.toFixed(5)}</p>
+                                    <span id="decCurrency">{total_dec_price.toFixed(2)} {localCurrency.toUpperCase()}</span>
+                                </div>
+                                <div className="w3-clear"></div>
+                            </div>
+                        </div>
+                        {/* TOTAL SPS */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
+                                <p className='card-header w3-center'>TOTAL SPS</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
+                                <div className="w3-right">
+                                    <p id="sps">{totalSps.toFixed(3)}</p>
+                                    <span id="spsCurrency">{total_sps_price.toFixed(2)} {localCurrency.toUpperCase()}</span>
+                                </div>
+                                <div className="w3-clear"></div>
+                            </div>
+                        </div>
+                        {/* TOTAL STAKES SPS */}
+                        <div className="w3-quarter w3-padding">
+                            <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
+                                <p className='card-header w3-center'>TOTAL STAKED</p>
+                                <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
+                                <div className="w3-right">
+                                    <p id="spsp">{totalStake.toFixed(3)}</p>
+                                    <span id="spspCurrency">{total_ssps_price.toFixed(2)} {localCurrency.toUpperCase()}</span>
+                                </div>
                             <div className="w3-clear"></div>
                         </div>
-                    </div>  
-                    {/* TOTAL DEC */}
-                    <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
-                            <p className='card-header w3-center'>TOTAL DEC</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
-                            <div className="w3-right">
-                                <p id="dec">{totalDec.toFixed(5)}</p>
-                                <span id="decCurrency">{total_dec_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
-                            </div>
-                            <div className="w3-clear"></div>
-                        </div>
-                    </div>
-                    {/* TOTAL SPS */}
-                    <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
-                            <p className='card-header w3-center'>TOTAL SPS</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
-                            <div className="w3-right">
-                                <p id="sps">{totalSps.toFixed(3)}</p>
-                                <span id="spsCurrency">{total_sps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
-                            </div>
-                            <div className="w3-clear"></div>
-                        </div>
-                    </div>
-                    {/* TOTAL STAKES SPS */}
-                    <div className="w3-quarter w3-padding">
-                        <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
-                            <p className='card-header w3-center'>TOTAL STAKED</p>
-                            <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
-                            <div className="w3-right">
-                                <p id="spsp">{totalStake.toFixed(3)}</p>
-                                <span id="spspCurrency">{total_ssps_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
-                            </div>
-                        <div className="w3-clear"></div>
                     </div>
                 </div>
-            </div>
-        </>
-    )
+            </>
+        )
+
+    } catch {
+        
+        const localCurrency = window.localStorage.getItem("currency");
+        localCurrency ? document.getElementById("currency").value = localCurrency : document.getElementById("currency").value = "USD" && 
+        window.localStorage.setItem("currency", 'usd');
+        <Dashboard/>
+      
+    }
+    
 }
 
 export default Dashboard
