@@ -88,7 +88,7 @@ const Battles = () => {
                                     </ul>
                                 </td>
                                 <td style={{whiteSpace: 'nowrap'}}>{a.modern_last_battle}</td>
-                                <td><button className="btn-sm btn-danger" onClick={() => {
+                                <td><button className="btn btn-sm btn-outline-danger" type='button' onClick={() => {
                                     //delete from reducer
                                     dispatch(AccountSlice.actions.deleteAccount(a.username));
                                     //delete in localStorage

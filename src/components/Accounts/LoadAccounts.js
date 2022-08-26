@@ -69,7 +69,7 @@ const LoadAccounts = () => {
 
     return (
         <>
-            <button id='load-accounts' className="btn-sm btn-success m-1" onClick={()=> {
+            <button id='load-accounts' className="btn btn-success m-1 btn-sm" onClick={()=> {
                 loadAccountsFromLocalStorage()
             }}>LOAD/REFRESH ACCOUNTS</button>
             {loading && <Loading/>}    

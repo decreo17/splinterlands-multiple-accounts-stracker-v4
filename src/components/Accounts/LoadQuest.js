@@ -76,12 +76,12 @@ const LoadQuest = () => {
     }
 
     return (
-        <>
-            <button id='load-quest' className="btn-sm btn-success m-1" onClick={()=> {
+        <div className='col-lg-2 col-md-3 col-sm-6'>
+            <button id='load-quest' className="btn btn-sm btn-success m-1" onClick={()=> {
                 loadQuestFromAccountsInLocalStorage()
             }}>LOAD/REFRESH QUEST</button>
             {loading && <Loading/>}
-        </>                   
+        </div>                   
     )
 
 }

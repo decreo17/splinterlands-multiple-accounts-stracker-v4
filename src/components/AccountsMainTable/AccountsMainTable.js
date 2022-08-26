@@ -20,11 +20,11 @@ const AccountsMainTable = () => {
     const quest = useSelector((state)=> state.quest);
     const sps = useSelector((state)=> state.unclaimedSps);
 
-    const addAccountButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
+    const addAccountButton = <button className="btn btn-sm btn-success m-1" onClick={()=>{ 
         document.getElementById('add-account-modal').style.display='block'
     }}>ADD</button>
 
-    const clearAccountsButton = <button className="btn-sm btn-success m-1" onClick={()=>{ 
+    const clearAccountsButton = <button className="btn btn-sm btn-success m-1" onClick={()=>{ 
         dispatch(LoadingSlice.actions.isLoading(true))
         window.localStorage.removeItem("accounts");
         dispatch(AccountSlice.actions.reset());
@@ -42,7 +42,7 @@ const AccountsMainTable = () => {
 
     return (
         <>
-            <div className='text-center'>
+            <div className='d-grid gap-2 d-md-flex justify-content-md-end col-6 mx-auto'>
                 {addAccountButton}
                 <LoadAccounts />
                 {clearAccountsButton}

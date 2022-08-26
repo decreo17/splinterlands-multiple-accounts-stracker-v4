@@ -47,7 +47,7 @@ const Dashboard = () => {
         dispatch(DashboardSlice.actions.setDec(total_dec))
         dispatch(DashboardSlice.actions.setSps(total_sps))
         dispatch(DashboardSlice.actions.setStake(total_ssps))
-
+        // eslint-disable-next-line 
     }, [accounts])
     
     
@@ -62,7 +62,7 @@ const Dashboard = () => {
         .then((data) => {
             dispatch(DashboardSlice.actions.setDecPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
         }); 
-        
+        // eslint-disable-next-line 
     }, [localCurrency, totalAccounts])
 
     total_dec_price = decPrice * totalDec
