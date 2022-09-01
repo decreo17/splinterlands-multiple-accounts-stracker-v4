@@ -4,7 +4,7 @@ import settingsApi from '../../api/settingsApi';
 import { useSelector, useDispatch } from 'react-redux'
 import { setDays, setHours, setMinutes, setSeconds, setSeasonName } from '../../slices/seasonSlice';
 import React, { useEffect } from "react";
-import RewardPools from '../rewardPools/rewardPools';
+//import RewardPools from '../rewardPools/rewardPools';
 import LoadingSlice from '../../slices/loadingSlice';
 import SettingsSlice from '../../slices/settingsSlice';
 
@@ -55,8 +55,8 @@ const SeasonBanner = () => {
                     <span id="hours"></span> {hours} Hours
                     <span id="minutes"></span> {minutes} Minutes
                     <span id="seconds"></span> {seconds} Seconds
-                    {/*reward pool here*/}
-                    <RewardPools />
+                    {/*reward pool here <RewardPools />*/}
+                    
                     <br/>
                     <span className="w3-text-grey">For support and appreciation for this project you may donate Cards, 
                     DEC or SPS to @dadee or @decreo ingame or via hive blockchain</span>
