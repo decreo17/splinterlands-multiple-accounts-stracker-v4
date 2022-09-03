@@ -144,12 +144,12 @@ const UpdateNetIncome = () => {
     }
     
   return (
-    <>
-        <button id='load-net-income' className="btn-sm btn-success m-1" onClick={()=> {
+    <div className='col-lg-6 col-md-6 col-sm-6'>
+        <button id='load-net-income' className="btn btn-sm btn-success m-1" onClick={()=> {
             loadAccountsFromLocalStorage()
         }}>LOAD/REFRESH NETINCOME</button>
         {loading && <Loading/>}
-    </>
+    </div>
 
   )
 

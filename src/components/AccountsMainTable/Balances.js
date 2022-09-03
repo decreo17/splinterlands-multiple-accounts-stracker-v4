@@ -89,7 +89,7 @@ const Balances = () => {
                                 <td>{a.chaos}</td>
                                 <td>{a.merits}</td>
                                 <td>{totalUnclaimedSps(a.username)}</td>
-                                <td><button className="btn-sm btn-danger" onClick={() => {
+                                <td><button className="btn btn-sm btn-danger" onClick={() => {
                                     //delete from reducer
                                     dispatch(AccountSlice.actions.deleteAccount(a.username));
                                     //delete in localStorage

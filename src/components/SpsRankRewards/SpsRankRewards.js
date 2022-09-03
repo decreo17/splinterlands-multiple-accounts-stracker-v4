@@ -117,12 +117,12 @@ export const UpdateUnclaimedSpsBalance = ()=> {
     }
 
     return (
-        <>
-            <button id='load-unclaimed-sps' className="btn-sm btn-success m-1" onClick={()=> {
+        <div className='col-lg-2 col-md-3 col-sm-6'>
+            <button id='load-unclaimed-sps' className="btn btn-sm btn-success m-1" onClick={()=> {
                 loadSpsFromAccountsLocalStorage()
             }}>LOAD/REFRESH RANK REWARDS</button>
             {loading && <Loading/>}
-        </>
+        </div>
     
       )
 }
@@ -130,6 +130,19 @@ export const UpdateUnclaimedSpsBalance = ()=> {
 const SpsRankRewards = () => {
     const localTheme = window.localStorage.getItem('theme');
     const sps = useSelector((state)=> state.unclaimedSps);
+    var total_wild = 0
+    var total_modern = 0
+    var total_focus = 0
+    var total_season = 0
+    var total_total = 0
+
+    sps.forEach(balance => {
+        total_wild += parseFloat(balance.wild)
+        total_modern += parseFloat(balance.modern)
+        total_focus += parseFloat(balance.focus)
+        total_season += parseFloat(balance.season)
+        total_total += parseFloat(balance.total)
+    })
     
     //fitler is not yet working, need to find better sort and filter
     $("#collapsSearchSps").on("keyup", function() {
@@ -174,13 +187,22 @@ const SpsRankRewards = () => {
                                     <tr key={i}>
                                         <td>{i+1}</td>
                                         <td>{a.username}</td>
-                                        <td>{a.wild}</td>
-                                        <td>{a.modern}</td>
-                                        <td>{a.season}</td>
-                                        <td>{a.focus}</td>
-                                        <td>{a.total}</td>
+                                        <td>{parseFloat(a.wild).toFixed(3)}</td>
+                                        <td>{parseFloat(a.modern).toFixed(3)}</td>
+                                        <td>{parseFloat(a.season).toFixed(3)}</td>
+                                        <td>{parseFloat(a.focus).toFixed(3)}</td>
+                                        <td>{parseFloat(a.total).toFixed(3)}</td>
                                     </tr>
                                 ))}
+                                <tr>
+                                    <th>-</th>
+                                    <th>Total</th>
+                                    <th>{parseFloat(total_wild).toFixed(3)}</th>
+                                    <th>{parseFloat(total_modern).toFixed(3)}</th>
+                                    <th>{parseFloat(total_season).toFixed(3)}</th>
+                                    <th>{parseFloat(total_focus).toFixed(3)}</th>
+                                    <th>{parseFloat(total_total).toFixed(3)}</th>                                    
+                                </tr>
                             </tbody>
                         </table><br/>
                     </div>
