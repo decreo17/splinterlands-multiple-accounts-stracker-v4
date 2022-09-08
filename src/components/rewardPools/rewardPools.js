@@ -12,7 +12,7 @@ const RewardPools = () => {
     useEffect(() => {
         
         rewardsApi.then((data) => { 
-            data.forEach(rewards => {
+            data['unclaimed_balances'].forEach(rewards => {
                 if (rewards.type === 'wild') dispatch(setWild(new Intl.NumberFormat().format(rewards.balance)))
                 else if (rewards.type === 'modern') dispatch(setModern(new Intl.NumberFormat().format(rewards.balance)))                
             });

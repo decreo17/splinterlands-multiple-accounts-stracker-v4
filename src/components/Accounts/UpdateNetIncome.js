@@ -1,7 +1,8 @@
-import { getCards, getDecTransactions } from '../../api/playerApi';
+import { getCards, getUnclaimedBalanceHistory } from '../../api/playerApi';
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
 import LoadingSlice from '../../slices/loadingSlice';
+import CoinGecoPriceApi from '../../api/CoinGecoPrice';
 
 //for toast
 import { toast } from 'react-toastify';
@@ -16,12 +17,26 @@ export const daysAgo = (numOfDdays) => {
 }
 
 export const getNetIncomeDetails = async(username,days = 1) => {
+    //days = parseFloat(document.getElementById("netIncomeDays").value)
     var cards = []
     var rent = 0
     var earned = 0
-    var netIncome = 0
+    //var netIncome = ''
+    //var spsPrice = 0
+    //var decPrice
+    //const localCurrency = window.localStorage.getItem("currency");
     //var transactions = []
+
+    /*await CoinGecoPriceApi("splinterlands")
+        .then((data) => {
+           spsPrice = data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]
+        }); 
     
+    await CoinGecoPriceApi("dark-energy-crystals")
+        .then((data) => {
+            decPrice = data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]
+        });*/
+    console.log(days + " days")
     await getCards(username)
     .then((data) => {
         cards = data['cards'];
@@ -43,16 +58,18 @@ export const getNetIncomeDetails = async(username,days = 1) => {
         return null;
     });
 
-    await getDecTransactions(username)
+    await getUnclaimedBalanceHistory(username)
     .then((data) => {
         
         let duration = daysAgo(days)
-        let decTransactions = data.filter(transaction => transaction.type === "dec_reward" || transaction.type === "quest_rewards")
-        //let decTransactions = data.filter(transaction => transaction.type === "dec_reward")
-            .filter(transaction => Date.parse(transaction.created_date) > duration)
-        //transactions = decTransactions
-        decTransactions.map(x => earned += parseFloat(x.amount));
-        netIncome = earned - rent
+        let spsUnclaimedRewards = data.filter(transaction => parseFloat(transaction.amount) > 0)
+                                .filter(transaction => Date.parse(transaction.created_date) > duration) //data.filter(transaction => transaction.type === "dec_reward" || transaction.type === "quest_rewards")
+        //let spsUnclaimedRewards = data.filter(transaction => transaction.type === "dec_reward")
+        //transactions = spsUnclaimedRewards
+        spsUnclaimedRewards.map(x => earned += parseFloat(x.amount));
+        console.log(spsUnclaimedRewards)
+        //netIncome = (earned * spsPrice) - (rent * decPrice)
+
     })
     .catch(err => {
         console.error(err);
@@ -73,7 +90,7 @@ export const getNetIncomeDetails = async(username,days = 1) => {
         username          : username,
         rent              : rent,
         earned            : earned,
-        netIncome         : netIncome
+       
     }
     
 }
@@ -127,7 +144,7 @@ const UpdateNetIncome = () => {
                         });
                     }
                 }
-                //dispatch(DecTransactionsSlice.actions.setNetIncome(accounts))
+                //dispatch(spsUnclaimedRewardsSlice.actions.setNetIncome(accounts))
             toast.success("Accounts Loaded!", {
                 position: "top-right",
                 autoClose: 3000,

@@ -18,11 +18,11 @@ export const getUnclaimedSpsBalance = async(username) => {
     var modern = 0
     var season = 0
     var focus = 0
-    var total = 0
+    //var total = 0
 
     await getUnclaimedBalance(username)
     .then((data) => {
-        data.forEach((account) => {
+        data['unclaimed_balances'].forEach((account) => {
             if(account.type === "wild") wild = account.balance
             else if (account.type === "modern") modern = account.balance
             else if (account.type === "focus") focus = account.balance

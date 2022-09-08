@@ -12,9 +12,10 @@ const NetIncomeDashboard = () => {
     const localCurrency = window.localStorage.getItem("currency");
     const totalAccounts = useSelector(state => state.dashboard.totalAccounts)
     const decPrice = useSelector(state => state.dashboard.decPrice)
+    const spsPrice = useSelector(state => state.dashboard.spsPrice)
     const totalEarned = useSelector(state => state.dashboard.totalEarned)
     const totalRent = useSelector(state => state.dashboard.totalRent)
-    const netIncome = useSelector(state => state.dashboard.netIncome)
+    //const netIncome = useSelector(state => state.dashboard.netIncome)
     var total_earned_price = 0
     var total_rent_price = 0
     var netIncome_price = 0
@@ -22,14 +23,6 @@ const NetIncomeDashboard = () => {
     var total_rent = 0
     var total_netincome = 0
     var total_accounts = 0
-
-    netincome.forEach(a => {
-        total_accounts ++;
-        total_earned += a.earned;
-        total_rent += a.rent;
-        total_netincome += a.netIncome;
-    })
-
 
     useEffect(() => {
         dispatch(DashboardSlice.actions.setEarned(total_earned))
@@ -51,11 +44,17 @@ const NetIncomeDashboard = () => {
         
     }, [accounts, localCurrency])
 
-    total_earned_price = decPrice * totalEarned
+    netincome.forEach(a => {
+        total_accounts ++;
+        total_earned += a.earned;
+        total_rent += a.rent;
+        total_netincome += ((a.earned * spsPrice) - (a.rent * decPrice))
+    })
+
+    total_earned_price = spsPrice * totalEarned
     total_rent_price = decPrice * totalRent
-    netIncome_price = decPrice * netIncome
-
-
+    netIncome_price = total_netincome
+   
     return (
         <>
             <h5><b><i><FontAwesomeIcon icon={faDashboard}/></i> Rent Income Dashboard</b></h5>
@@ -73,14 +72,14 @@ const NetIncomeDashboard = () => {
                     </div>
                 </div>
 
-                {/* DEC EARNED */}
+                {/* SPS EARNED */}
                 <div className="w3-quarter w3-padding">
                     <div className="bg-gradient w3-container w3-round w3-purple w3-padding-16">
-                        <p className='card-header w3-center'>TOTAL EARNED</p>
+                        <p className='card-header w3-center'>TOTAL EARNED(SPS)</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                         <div className="w3-right">
                             <p id="total-earned">{totalEarned.toFixed(5)}</p>
-                            <span id="earned-currency">{total_earned_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
+                            <span id="earned-currency">{total_earned_price.toFixed(3)} {localCurrency.toLocaleUpperCase()}</span>
                         </div>
                         <div className="w3-clear"></div>
                     </div>
@@ -88,23 +87,23 @@ const NetIncomeDashboard = () => {
                 {/* DEC RENT */}
                 <div className="w3-quarter w3-padding">
                     <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
-                        <p className='card-header w3-center'>TOTAL RENT</p>
+                        <p className='card-header w3-center'>TOTAL RENT(DEC)</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
                         <div className="w3-right">
                             <p id="total-rent">{totalRent.toFixed(5)}</p>
-                            <span id="rent-currency">{total_rent_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
+                            <span id="rent-currency">{total_rent_price.toFixed(3)} {localCurrency.toLocaleUpperCase()}</span>
                         </div>
                         <div className="w3-clear"></div>
                     </div>
                 </div>
-                {/* DEC NETINCOME */}
+                {/* Local Currency NETINCOME */}
                 <div className="w3-quarter w3-padding">
                     <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                         <p className='card-header w3-center'>NET INCOME</p>
                         <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
                         <div className="w3-right">
-                            <p id="netincome">{netIncome.toFixed(5)}</p>
-                            <span id="netincome-currency">{netIncome_price.toFixed(2)} {localCurrency.toLocaleUpperCase()}</span>
+                            <p id="netincome-currency">{netIncome_price.toFixed(3)} {localCurrency.toLocaleUpperCase()}</p>
+                            <br/>
                         </div>
                         <div className="w3-clear"></div>
                     </div>

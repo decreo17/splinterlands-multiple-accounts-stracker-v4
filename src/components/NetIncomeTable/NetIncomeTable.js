@@ -1,20 +1,68 @@
 import UpdateNetIncome from '../Accounts/UpdateNetIncome'
 import './NetIncomeTable.css'
 import $ from 'jquery';
-import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import UpdateMarketPrice from '../UpdateMarketPrice/UpdateMarketPrice';
 import PnlTable from '../PnlTable/PnlTable';
 import 'bootstrap'
+import CoinGecoPriceApi from '../../api/CoinGecoPrice';
+import DashboardSlice from '../../slices/dashboardSlice';
 
 
+/**
+ * To implement <NetIncomeDays/> we need to separate rentals into DEC and Credits
+ * We will then call them both to get the rental and will have them reflect price,
+ * the only difference though is that credits will be peg to USD
+ *  
+ */
+
+const NetIncomeDays =() => {
+    var days = []
+    for (let i = 0; i < 15; i++) {
+        days.push((i+1).toString())
+    }
+    
+    const daysObjects = days.map((day, i) => ({id:i, value:day, text:day}));
+
+    const daysOptions = daysObjects.map((day) => (
+        <option key={day.id} value={(day.value)}>{day.text}</option>
+    ))
+
+
+    return (
+        <div className="w3-padding">
+            <select id="netIncomeDays" >
+                {daysOptions}
+            </select>
+            <span > Days</span>
+        </div>
+    )
+}
 
 const NetIncomeTable = ()=> {
+    const dispatch = useDispatch()
     const netincome = useSelector((state)=> state.transactions.netIncome);
     const localTheme = window.localStorage.getItem('theme');
+    const localCurrency = window.localStorage.getItem("currency");
+    const decPrice = useSelector(state => state.dashboard.decPrice)
+    const spsPrice = useSelector(state => state.dashboard.spsPrice)
 
+
+    useEffect(() => {
+        CoinGecoPriceApi("splinterlands")
+        .then((data) => {
+            dispatch(DashboardSlice.actions.setSpsPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
+        }); 
+
+        CoinGecoPriceApi("dark-energy-crystals")
+        .then((data) => {
+            dispatch(DashboardSlice.actions.setDecPrice(data["market_data"]["current_price"][localCurrency.toLocaleLowerCase()]))
+        }); 
+        
+    }, [localCurrency])
     $("#collapsSearchNetIncome").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#netincome-table tr").filter(function() {
@@ -25,7 +73,6 @@ const NetIncomeTable = ()=> {
 
     useEffect(() => {
         if(localTheme === 'light') {
-        console.log(localTheme)
         $("#netincome-table").removeClass("table-dark ");
         }
     })
@@ -36,8 +83,8 @@ const NetIncomeTable = ()=> {
                 <div className="w3-container"  id="quest">
                     <br/>
                     <h5><b><i><FontAwesomeIcon icon={faUsers}/></i> Users:</b></h5>
-                    <div>
-                        <UpdateNetIncome/> 
+                    <div className='d-flex'>
+                        <UpdateNetIncome/> {/*<NetIncomeDays/>*/}
                     </div>
                     <div className="">
                         <input className="w3-input w3-border w3-padding" type="text" 
@@ -47,8 +94,8 @@ const NetIncomeTable = ()=> {
                                 <tr id="tr-netincome" className="sticky-table-head w3-dark-grey">
                                     <th >#</th>
                                     <th >Username</th>
-                                    <th >Dec Earned</th>
-                                    <th >Rent</th>
+                                    <th >SPS Earned <i title='This includes rank battles, season and focus rewards'><FontAwesomeIcon icon={faInfoCircle}/></i></th>
+                                    <th >Dec Rent</th>
                                     <th >Net Income</th>
                                 </tr>
                             </thead>
@@ -57,9 +104,9 @@ const NetIncomeTable = ()=> {
                                     <tr key={i}>
                                         <td>{i+1}</td>
                                         <td>{a.username}</td>
-                                        <td>{a.earned.toFixed(3)}</td>
-                                        <td>{a.rent.toFixed(3)}</td>
-                                        <td>{a.netIncome.toFixed(3)}</td>
+                                        <td>{a.earned.toFixed(3)} ({(a.earned * spsPrice).toFixed(3)} {localCurrency.toLocaleUpperCase()})</td>
+                                        <td>{a.rent.toFixed(3)} ({(a.rent * decPrice).toFixed(3)} {localCurrency.toLocaleUpperCase()})</td>
+                                        <td>{((a.earned * spsPrice) - (a.rent * decPrice)).toFixed(3)} {localCurrency.toLocaleUpperCase()}</td>
                                     </tr>
                                 ))}
                             </tbody>

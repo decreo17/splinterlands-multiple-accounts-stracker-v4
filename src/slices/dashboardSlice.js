@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {totalAccounts: 0, decPrice: 0, spsPrice: 0, totalChaos: 0, totalCredits: 0, totalDec: 0, totalSps: 0, totalStake: 0,
-    totalEarned: 0, totalRent: 0, netIncome: 0 };
+    totalEarned: 0, totalRent: 0, netIncome: 0, totalSpsRewards: 0 };
 
 const DashboardSlice = createSlice({
     name            : 'dashboard',
@@ -66,6 +66,9 @@ const DashboardSlice = createSlice({
         },
         setNetIncome(state, action){
             state.netIncome = action.payload
+        },
+        setTotalSpsRewards(state, action){
+            state.totalSpsRewards = action.payload
         }
     } 
 });
