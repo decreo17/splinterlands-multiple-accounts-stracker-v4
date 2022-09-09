@@ -1,5 +1,4 @@
 import splinterlandsApi from "./splinterlandsApi";
-import $ from 'jquery';
 //for toast
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
