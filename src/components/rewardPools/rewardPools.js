@@ -52,7 +52,7 @@ const RewardPools = () => {
             <span id="reward_pool">Wild Rewards:</span> <span className='text-info'>Bronze {wild}</span> <span>Silver: {wild_1}</span> 
             <span className='text-info'> Gold: {wild_2}</span> <span>Dia: {wild_3}</span> <span className='text-info'>Champ {wild_4} </span>
             <br />
-            <span id="reward_pool_modern"> Modern Rewards:</span> <span className='text-info'> Bronze </span> <span>{modern}</span> <span>Silver: {modern_1}</span> 
+            <span id="reward_pool_modern"> Modern Rewards:</span> <span className='text-info'> Bronze {modern}</span> <span>Silver: {modern_1}</span> 
             <span className='text-info'> Gold: {modern_2}</span> <span>Dia: {modern_3}</span> <span className='text-info'>Champ {modern_4}</span>
         </>
     )
