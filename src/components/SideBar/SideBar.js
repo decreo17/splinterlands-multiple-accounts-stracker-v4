@@ -30,8 +30,8 @@ export const SideBar = () => {
                     <i><FontAwesomeIcon icon={faDollar} /></i>  Cards PnL</a>
                 <a href={url} className="w3-bar-item w3-button w3-padding w3-blue">
                     <i><FontAwesomeIcon icon={faPencilSquare} /></i>  Updates</a>*/}
-                <Link to='net-income' className="w3-bar-item w3-button w3-padding w3-blue">
-                    <i><FontAwesomeIcon icon={faGlobe} /></i>  Net Income</Link>
+                {/*<Link to='net-income' className="w3-bar-item w3-button w3-padding w3-blue">
+                    <i><FontAwesomeIcon icon={faGlobe} /></i>  Net Income</Link>*/}
                 <a href="https://decreo17.github.io/" className="w3-bar-item w3-button w3-padding w3-blue">
                     <i><FontAwesomeIcon icon={faGlobe} /></i>  Old Tracker</a>
             </div>
