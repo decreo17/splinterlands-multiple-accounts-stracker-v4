@@ -59,7 +59,7 @@ const Battles = () => {
                             <tr key={i}>
                                 <td>{i+1}</td>
                                 <td>{a.username}</td>
-                                <td>{`${a.ecr}%`}</td>
+                                <td>{`${a.ecr}`}</td>
                                 <td>{a.power}</td>
                                 <td>{a.rank}</td>
                                 <td>{a.rating}</td>

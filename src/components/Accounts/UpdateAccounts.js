@@ -83,10 +83,19 @@ export const getAccountDetails = async(username) => {
     await getPlayerBalance(username)
     .then((data) => {
         //console.log(data)
+        
+        /** Old ECR
         var lastCaptureRate = data.find(x => x.token === "ECR").balance, 
         lastRewardTime = new Date(data.find(x => x.token === "ECR").last_reward_time);    
         
         ecr = (calculateECR(lastCaptureRate, lastRewardTime)/100).toFixed(2);
+        */
+
+        //March 2023 ECR
+        var lastCaptureRate = parseFloat(data.find(x => x.token === "ECR").balance), 
+        lastRewardTime = new Date(data.find(x => x.token === "ECR").last_reward_time);    
+        
+        ecr = (calculateECR(lastCaptureRate, lastRewardTime)).toFixed(2);
 
         data.forEach((account) => {
             if(account.token === "DEC") dec = account.balance
