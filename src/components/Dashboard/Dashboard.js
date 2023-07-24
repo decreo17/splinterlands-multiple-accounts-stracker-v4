@@ -168,7 +168,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         {/* TOTAL STAKES SPS */}
-                        <div className="w3-quarter w3-padding" title={`Owned: ${total_ssps} | Delegated in: ${total_ssps_in} | Delegated out: ${total_ssps_out}`}>
+                        <div className="w3-quarter w3-padding" title={`Owned: ${total_ssps.toFixed(2)} | Delegated in: ${total_ssps_in.toFixed(2)} | Delegated out: ${total_ssps_out.toFixed(2)}`}>
                             <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                                 <p className='card-header w3-center'>TOTAL STAKED</p>
                                 <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>
