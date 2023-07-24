@@ -72,7 +72,7 @@ const Dashboard = () => {
 
     total_dec_price = decPrice * totalDec
     total_sps_price = spsPrice * totalSps
-    total_ssps_price = spsPrice * totalStake
+    total_ssps_price = spsPrice * total_ssps
     total_credits_price = totalCredits / 1000
 
     try {
