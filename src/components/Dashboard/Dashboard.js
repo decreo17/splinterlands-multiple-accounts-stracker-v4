@@ -30,6 +30,9 @@ const Dashboard = () => {
     let total_sps_price = 0;
     let total_ssps_price = 0;
     let total_credits_price = 0;
+    let total_ssps_in = 0;
+    let total_ssps_out = 0;
+
 
     accounts.forEach(a => {
         total_accounts ++;
@@ -38,6 +41,8 @@ const Dashboard = () => {
         total_ssps += a.s_sps;
         total_credits += a.credits;
         total_chaos += a.chaos;
+        total_ssps_in += a.s_sps_in;
+        total_ssps_out += a.s_sps_out;
     })
 
     useEffect(() => {
@@ -46,7 +51,7 @@ const Dashboard = () => {
         dispatch(DashboardSlice.actions.setCredits(total_credits))
         dispatch(DashboardSlice.actions.setDec(total_dec))
         dispatch(DashboardSlice.actions.setSps(total_sps))
-        dispatch(DashboardSlice.actions.setStake(total_ssps))
+        dispatch(DashboardSlice.actions.setStake(total_ssps-total_ssps_out+total_ssps_in))
         // eslint-disable-next-line 
     }, [accounts])
     
@@ -151,7 +156,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         {/* TOTAL SPS */}
-                        <div className="w3-quarter w3-padding">
+                        <div className="w3-quarter w3-padding" >
                             <div className="bg-gradient w3-container w3-round w3-green w3-padding-16">
                                 <p className='card-header w3-center'>TOTAL SPS</p>
                                 <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faBitcoinSign}/></i></div>
@@ -163,7 +168,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         {/* TOTAL STAKES SPS */}
-                        <div className="w3-quarter w3-padding">
+                        <div className="w3-quarter w3-padding" title={`Owned: ${total_ssps} | Delegated in: ${total_ssps_in} | Delegated out: ${total_ssps_out}`}>
                             <div className="bg-gradient w3-container w3-round w3-orange w3-text-white w3-padding-16">
                                 <p className='card-header w3-center'>TOTAL STAKED</p>
                                 <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faHeart}/></i></div>

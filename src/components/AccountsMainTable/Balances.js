@@ -81,7 +81,8 @@ const Balances = () => {
                                 <td>{a.power}</td>                                   
                                 <td>{a.dec}</td>
                                 <td>{a.sps}</td>
-                                <td>{a.s_sps}</td>
+                                <td title={`Owned: ${a.s_sps} | Delegated in: ${a.s_sps_in} | Delegated out: ${a.s_sps_out}`}>
+                                    { parseFloat(a.s_sps + a.s_sps_in - a.s_sps_out).toFixed(2)}</td>
                                 <td>{a.credits}</td>
                                 <td>{a.voucher}</td>
                                 <td>{a.gold_potion}</td>

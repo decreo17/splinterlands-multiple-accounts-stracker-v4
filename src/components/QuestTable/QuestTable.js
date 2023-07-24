@@ -45,7 +45,7 @@ const QuestTable = () => {
                                     <th >Focus</th>
                                     <th >Completion</th>
                                     <th >Progress</th>
-                                    <th >Time Remaining</th>
+                                    {/*<th >Time Remaining</th> */}
                                     <th >Season League</th>
                                     <th >Season Completion</th>
                                     <th >Season Progress</th>
@@ -58,7 +58,7 @@ const QuestTable = () => {
                                         <td>{a.username}</td>
                                         <td>{a.focus}</td>
                                         <td> Daily Chest: {a.chest} </td>
-                                        <td>
+                                        {/** <td>
                                             <progress className="chest_progress" value={Math.round(a.rshares - a.prev_total_rShares)} 
                                                 max={Math.round(a.chest_rShares - a.prev_total_rShares)}> 
                                                 {Math.round(a.rshares - a.prev_total_rShares)/Math.round(a.chest_rShares - a.prev_total_rShares)}
@@ -67,7 +67,7 @@ const QuestTable = () => {
                                             {Math.round(a.rshares - a.prev_total_rShares)} /<span> </span> 
                                             {Math.round(a.chest_rShares - a.prev_total_rShares)}
 
-                                        </td>
+                                        </td>*/}
                                         <td>{a.questClaimed}</td>
                                         <td>{a.seasonChestLoot} Chest</td>
                                         <td>Season Chest: {a.seasonChestEarned} </td>
