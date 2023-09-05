@@ -18,6 +18,7 @@ export const getUnclaimedSpsBalance = async(username) => {
     var modern = 0
     var season = 0
     var focus = 0
+    var brawl = 0
     //var total = 0
 
     await getUnclaimedBalance(username)
@@ -27,6 +28,7 @@ export const getUnclaimedSpsBalance = async(username) => {
             else if (account.type === "modern") modern = account.balance
             else if (account.type === "focus") focus = account.balance
             else if (account.type === "season") season = account.balance
+            else if (account.type === "brawl") brawl = account.balance
         })
     })
     .catch(err => {
@@ -51,7 +53,8 @@ export const getUnclaimedSpsBalance = async(username) => {
         modern      : modern,
         season      : season,
         focus       : focus,
-        total       : parseFloat(wild) + parseFloat(modern) + parseFloat(season) + parseFloat(focus)
+        brawl       : brawl,
+        total       : parseFloat(wild) + parseFloat(modern) + parseFloat(season) + parseFloat(focus) + parseFloat(brawl)
     }
 }
 
@@ -135,12 +138,14 @@ const SpsRankRewards = () => {
     var total_focus = 0
     var total_season = 0
     var total_total = 0
+    var total_brawl = 0
 
     sps.forEach(balance => {
         total_wild += parseFloat(balance.wild)
         total_modern += parseFloat(balance.modern)
         total_focus += parseFloat(balance.focus)
         total_season += parseFloat(balance.season)
+        total_brawl += parseFloat(balance.brawl)
         total_total += parseFloat(balance.total)
     })
     
@@ -179,6 +184,7 @@ const SpsRankRewards = () => {
                                     <th >Battles Modern</th>
                                     <th >Season Chest</th>
                                     <th >Focus Chest</th>
+                                    <th >Brawl</th>
                                     <th >Total</th>
                                 </tr>
                             </thead>
@@ -191,6 +197,7 @@ const SpsRankRewards = () => {
                                         <td>{parseFloat(a.modern).toFixed(3)}</td>
                                         <td>{parseFloat(a.season).toFixed(3)}</td>
                                         <td>{parseFloat(a.focus).toFixed(3)}</td>
+                                        <td>{parseFloat(a.brawl).toFixed(3)}</td>
                                         <td>{parseFloat(a.total).toFixed(3)}</td>
                                     </tr>
                                 ))}
@@ -201,6 +208,7 @@ const SpsRankRewards = () => {
                                     <th>{parseFloat(total_modern).toFixed(3)}</th>
                                     <th>{parseFloat(total_season).toFixed(3)}</th>
                                     <th>{parseFloat(total_focus).toFixed(3)}</th>
+                                    <td>{parseFloat(total_brawl).toFixed(3)}</td>
                                     <th>{parseFloat(total_total).toFixed(3)}</th>                                    
                                 </tr>
                             </tbody>
