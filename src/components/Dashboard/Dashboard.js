@@ -10,7 +10,7 @@ const Dashboard = () => {
     const totalAccounts = useSelector(state => state.dashboard.totalAccounts)
     const decPrice = useSelector(state => state.dashboard.decPrice)
     const spsPrice = useSelector(state => state.dashboard.spsPrice)
-    const totalChaos = useSelector(state => state.dashboard.totalChaos)
+    const totalGlint = useSelector(state => state.dashboard.totalGlint)
     const totalCredits = useSelector(state => state.dashboard.totalCredits)
     const totalDec = useSelector(state => state.dashboard.totalDec)
     const totalSps = useSelector(state => state.dashboard.totalSps)
@@ -21,7 +21,7 @@ const Dashboard = () => {
     const localCurrency = window.localStorage.getItem("currency");
     //calculate total
     let total_accounts = 0;
-    let total_chaos = 0;
+    let total_glint = 0;
     let total_credits = 0;
     let total_dec = 0;
     let total_sps = 0;
@@ -40,14 +40,14 @@ const Dashboard = () => {
         total_sps += a.sps;
         total_ssps += a.s_sps;
         total_credits += a.credits;
-        total_chaos += a.chaos;
+        total_glint += a.glint;
         total_ssps_in += a.s_sps_in;
         total_ssps_out += a.s_sps_out;
     })
 
     useEffect(() => {
         dispatch(DashboardSlice.actions.setAccount(total_accounts))
-        dispatch(DashboardSlice.actions.setChaos(total_chaos))
+        dispatch(DashboardSlice.actions.setGlint(total_glint))
         dispatch(DashboardSlice.actions.setCredits(total_credits))
         dispatch(DashboardSlice.actions.setDec(total_dec))
         dispatch(DashboardSlice.actions.setSps(total_sps))
@@ -119,13 +119,13 @@ const Dashboard = () => {
                                 <div className="w3-clear"></div>
                             </div>
                         </div>
-                        {/* CHAOS */}
+                        {/* GLINT */}
                         <div className="w3-quarter w3-padding">
                             <div className="bg-gradient w3-container w3-round w3-red w3-padding-16">
-                                <p className='card-header w3-center'>TOTAL CHAOS</p>
+                                <p className='card-header w3-center'>TOTAL GLINT</p>
                                 <div className="w3-left"><i className="w3-xlarge"><FontAwesomeIcon icon={faUser}/></i></div>
                                 <div className="w3-right accounts">
-                                    <p id="total-chaos">{totalChaos}</p>
+                                    <p id="total-glint">{totalGlint}</p>
                                     <br/>
                                 </div>
                                 <div className="w3-clear"></div>

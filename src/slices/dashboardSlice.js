@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {totalAccounts: 0, decPrice: 0, spsPrice: 0, totalChaos: 0, totalCredits: 0, totalDec: 0, totalSps: 0, totalStake: 0,
+const initialState = {totalAccounts: 0, decPrice: 0, spsPrice: 0, totalGlint: 0, totalCredits: 0, totalDec: 0, totalSps: 0, totalStake: 0,
     totalEarned: 0, totalRent: 0, netIncome: 0, totalSpsRewards: 0 };
 
 const DashboardSlice = createSlice({
@@ -11,7 +11,7 @@ const DashboardSlice = createSlice({
             state.totalAccounts = 0
             state.decPrice = 0
             state.spsPrice = 0
-            state.totalChaos = 0
+            state.totalGlint = 0
             state.totalCredits = 0
             state.totalDec = 0
             state.totalSps = 0
@@ -28,7 +28,7 @@ const DashboardSlice = createSlice({
         resetDashboardExceptTotalAccounts(state){
             state.decPrice = 0
             state.spsPrice = 0
-            state.totalChaos = 0
+            state.totalGlint = 0
             state.totalCredits = 0
             state.totalDec = 0
             state.totalSps = 0
@@ -43,8 +43,8 @@ const DashboardSlice = createSlice({
         setSpsPrice(state, action){
             state.spsPrice = action.payload
         },
-        setChaos(state, action){
-            state.totalChaos = action.payload
+        setGlint(state, action){
+            state.totalGlint = action.payload
         },
         setCredits(state, action){
             state.totalCredits = action.payload
@@ -74,6 +74,6 @@ const DashboardSlice = createSlice({
 });
 
 export const { reset, resetRent, resetDashboardExceptTotalAccounts, setAccount: addAccount, setDecPrice,
-    setSpsPrice, setChaos: addChaos, setCredits: addCredits, setDec: addDec, setSps: addSps, setStake: addStake, setEarned: addEarned, setRent: addRent, setNetIncome: addNetIncome } = DashboardSlice.actions
+    setSpsPrice, setGlint: addGlint, setCredits: addCredits, setDec: addDec, setSps: addSps, setStake: addStake, setEarned: addEarned, setRent: addRent, setNetIncome: addNetIncome } = DashboardSlice.actions
 
 export default DashboardSlice;

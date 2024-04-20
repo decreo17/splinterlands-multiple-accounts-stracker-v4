@@ -41,7 +41,8 @@ export const getAccountDetails = async(username) => {
     let modern_win_rate = "";
     let modern_last_battle = "no battle";
     let s_sps_in = 0;
-    let s_sps_out = 0
+    let s_sps_out = 0;
+    let glint = 0;
 
     //player battle history
     let winCount = 0,
@@ -111,6 +112,7 @@ export const getAccountDetails = async(username) => {
             else if (account.token === 'MERITS') merits = account.balance
             else if (account.token === 'SPSP-IN') s_sps_in = account.balance
             else if (account.token === 'SPSP-OUT') s_sps_out = account.balance
+            else if (account.token === 'GLINT') glint = account.balance
         })
     })
     .catch(err => {
@@ -313,7 +315,8 @@ export const getAccountDetails = async(username) => {
         power                   : power, 
         dec                     : dec, 
         sps                     : sps,
-        s_sps                   : s_sps, 
+        s_sps                   : s_sps,
+        glint                   : glint, 
         credits                 : credits, 
         voucher                 : voucher, 
         chaos                   : chaos,

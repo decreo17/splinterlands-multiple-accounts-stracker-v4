@@ -66,7 +66,7 @@ const Balances = () => {
                             <th>Voucher</th>
                             <th>Gold Potion</th>
                             <th>Legendary Potion</th>
-                            <th>CL Packs</th>
+                            <th>Glint</th>
                             <th>Merits</th>
                             <th>Unclaimed Sps <i title='Click on SPS Rank Rewards to load unclaimed SPS'><FontAwesomeIcon icon={faInfoCircle}/></i></th>
                             <th>Action</th>
@@ -87,7 +87,7 @@ const Balances = () => {
                                 <td>{a.voucher}</td>
                                 <td>{a.gold_potion}</td>
                                 <td>{a.legend_potion}</td>
-                                <td>{a.chaos}</td>
+                                <td>{a.glint}</td>
                                 <td>{a.merits}</td>
                                 <td>{totalUnclaimedSps(a.username)}</td>
                                 <td><button className="btn btn-sm btn-danger" onClick={() => {

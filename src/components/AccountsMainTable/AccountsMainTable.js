@@ -62,7 +62,7 @@ const AccountsMainTable = () => {
                         aria-controls="component-balance" aria-selected="false">
                             Balances
                     </button>
-                    <button className="bg-gradient nav-link nav-item" id="component-quest-tab" data-bs-toggle="tab" 
+                    {/*<button className="bg-gradient nav-link nav-item" id="component-quest-tab" data-bs-toggle="tab" 
                         data-bs-target="#component-quest" type="button" role="tab" 
                         aria-controls="component-quest" aria-selected="false"
                         onClick={() => {
@@ -83,7 +83,7 @@ const AccountsMainTable = () => {
                             }
                         }}>
                             SPS Rank Rewards
-                    </button>
+                    </button>*/}
                 </div>
             </nav>
 
@@ -94,12 +94,12 @@ const AccountsMainTable = () => {
                 <div id="component-balance" className="tab-pane fade">
                     <Balances/>
                 </div>
-                <div id="component-quest" className="tab-pane fade">
+                {/*<div id="component-quest" className="tab-pane fade">
                     <QuestTable/>
                 </div>
                 <div id="component-sps" className="tab-pane fade">
                     <SpsRankRewards/>
-                </div>
+                    </div>*/}
             </div>
         </>
     )
